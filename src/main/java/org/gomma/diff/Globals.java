@@ -24,7 +24,11 @@ public class Globals {
 	
 	//Delimiter for multiple values
 	public static String DELIMITER = "#";
-	
+
+	//匹配概念的标识组分
+	public static String MATCHED_CONCEPT = "Matched_Concepts";
+	public static String SCENE_CONCEPT = "Scene";
+	public static String COMPONENT_CONCEPT = "Adaptive_Design_Components";
 	//Equation types
 	public static String EQUATION_EQUAL = "equal";
 	public static String EQUATION_UNEQUAL = "unequal";

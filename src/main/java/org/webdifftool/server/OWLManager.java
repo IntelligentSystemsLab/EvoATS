@@ -45,7 +45,10 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.search.EntitySearcher;
 
 public class OWLManager {
-	
+
+	List<String[]> matchedConcepts;
+	List<String[]> sceneConcepts ;
+
 	List<String[]> objectsImport; 
 	List<String[]> attributesImport;
 	List<String[]> relationshipsImport;
@@ -63,14 +66,37 @@ public class OWLManager {
 	List<String[]> attributeAdditions;
 	List<String[]> attributeDeletions;
 
-	Set<String> oldConcepts;
-	Map<String, List<String[]>> oldAttributes;
-	Map<String, List<String[]>> oldRelationships;
-	
-	Set<String> newConcepts;
-	Map<String, List<String[]>> newAttributes;
-	Map<String, List<String[]>> newRelationships;
-	
+	Set<String> oldConcepts = new HashSet<>();
+	Map<String, List<String[]>> oldAttributes = new HashMap<>();
+	Map<String, List<String[]>> oldRelationships = new HashMap<>();
+
+	Set<String> oldATSConcepts= new HashSet<>();
+	Map<String, List<String[]>> oldATSAttributes = new HashMap<>();
+	Map<String, List<String[]>> oldATSRelationships = new HashMap<>();
+
+	Set<String> oldSceneConcepts= new HashSet<>();
+	Map<String, List<String[]>> oldSceneAttributes = new HashMap<>();
+	Map<String, List<String[]>> oldSceneRelationships = new HashMap<>();
+
+	Set<String> oldMatchedConcepts= new HashSet<>();
+	Map<String, List<String[]>> oldMatchedAttributes = new HashMap<>();
+	Map<String, List<String[]>> oldMatchedRelationships = new HashMap<>();
+
+	Set<String> newConcepts= new HashSet<>();
+	Map<String, List<String[]>> newAttributes = new HashMap<>();
+	Map<String, List<String[]>> newRelationships = new HashMap<>();
+
+	Set<String> newATSConcepts= new HashSet<>();
+	Map<String, List<String[]>> newATSAttributes = new HashMap<>();
+	Map<String, List<String[]>> newATSRelationships = new HashMap<>();
+
+	Set<String> newSceneConcepts= new HashSet<>();
+	Map<String, List<String[]>> newSceneAttributes = new HashMap<>();
+	Map<String, List<String[]>> newSceneRelationships = new HashMap<>();
+
+	Set<String> newMatchedConcepts= new HashSet<>();
+	Map<String, List<String[]>> newMatchedAttributes = new HashMap<>();
+	Map<String, List<String[]>> newMatchedRelationships = new HashMap<>();
 	public Map<String,String> conceptNames;
 	
 	public boolean useSplitInference = true;
@@ -78,28 +104,74 @@ public class OWLManager {
 	public int oldVersionConceptSize = 0;
 	public int oldVersionRelationshipSize = 0;
 	public int oldVersionAttributeSize = 0;
-	
+
+	public int oldVersionATSConceptSize = 0;
+	public int oldVersionATSRelationshipSize = 0;
+	public int oldVersionATSAttributeSize = 0;
+
+	public int oldVersionMatchedConceptSize = 0;
+	public int oldVersionMatchedRelationshipSize = 0;
+	public int oldVersionMatchedAttributeSize = 0;
+
+	public int oldVersionSceneConceptSize = 0;
+	public int oldVersionSceneRelationshipSize = 0;
+	public int oldVersionSceneAttributeSize = 0;
+
 	public int newVersionConceptSize = 0;
 	public int newVersionRelationshipSize = 0;
 	public int newVersionAttributeSize = 0;
+	
+	public int newVersionATSConceptSize = 0;
+	public int newVersionATSRelationshipSize = 0;
+	public int newVersionATSAttributeSize = 0;
+
+	public int newVersionMatchedConceptSize = 0;
+	public int newVersionMatchedRelationshipSize = 0;
+	public int newVersionMatchedAttributeSize = 0;
+
+	public int newVersionSceneConceptSize = 0;
+	public int newVersionSceneRelationshipSize = 0;
+	public int newVersionSceneAttributeSize = 0;
+	
 	
 	public static void main(String[] args) throws Exception {
 		OWLManager test = new OWLManager();
 		test.parseAndIntegrateChanges("http://dbserv2.informatik.uni-leipzig.de/~hartung/MA_1-197.owl", "http://dbserv2.informatik.uni-leipzig.de/~hartung/MA_1-206.owl");
 	}
-	
+	public void getAssistConcept(OWLOntology ontology) { //用于获取非ATS组分的那些实体
+		OWLReasonerFactory reasonerFactory = new ElkReasonerFactory();
+		OWLReasoner reasoner = reasonerFactory.createNonBufferingReasoner(ontology);
+
+//		NodeSet<OWLClass> childC = reasoner.getSubClasses("owl:things",true);
+//		// get relationships
+//		for (Node<OWLClass> expr : superC.getNodes()) {
+//			String relName = null, relValue = null;
+//			for (OWLClass cExpr : expr.getEntities()) { //寻找is_a关系，通过推理机寻找对应实体的父类，即子类 is_a 父类
+//				if (!cExpr.isAnonymous()) {
+//					OWLClass rel = (OWLClass) cExpr;
+//					relName = "is_a";
+//					relValue = rel.getIRI().getFragment();  //IRI 即本体的编号对象，
+//					if (relValue != null && relName != null) {
+//						objRelSet.addRelationship(relValue, importObj.getAccessionNumber(), relName);  //结构：头，尾，关系
+//					} else {
+//						System.out.println("NULL VALUE");
+//					}
+//				}
+//			}
+//		}
+	}
 	public void parseAndIntegrateChanges(String oldVersionString, String newVersionString) {
 		this.conceptNames = new HashMap<String, String>();
 		
 		this.readOWLString(oldVersionString);
-		oldConcepts = this.getAllConcepts(false);
-		oldAttributes = this.getAllAttributes(false);
-		oldRelationships = this.getAllRelationships(false);
+		this.getAllConcepts(false);
+		this.getAllAttributes(false);
+		this.getAllRelationships(false);
 		
 		this.readOWLString(newVersionString);
-		newConcepts = this.getAllConcepts(true);
-		newAttributes = this.getAllAttributes(true);
-		newRelationships = this.getAllRelationships(true);
+		this.getAllConcepts(true);
+		this.getAllAttributes(true);
+		this.getAllRelationships(true);
 		
 		this.computeBasicConceptChanges(oldConcepts, newConcepts, oldAttributes, newAttributes);
 		this.computeBasicRelationshipChanges(oldRelationships, newRelationships);
@@ -107,19 +179,19 @@ public class OWLManager {
 		
 		this.integrateBasicChanges();
 	}
-	
+
 	public void parseAndIntegrateChanges(OWLOntology oldVersion, OWLOntology newVersion) {
 		this.conceptNames = new HashMap<String, String>();
 		
 		this.readOWLOntology(oldVersion); //对原本体中所有实体操作，获得其所有概念、属性、实体、关系，返回对应本体字符串
-		oldConcepts = this.getAllConcepts(false); //结构：id
-		oldAttributes = this.getAllAttributes(false); //结构：（id:<id,属性名，属性值>)
-		oldRelationships = this.getAllRelationships(false); //结构:id,<头实体、关系、尾实体>
-		
+		this.getAllConcepts(false); //结构：id
+		this.getAllAttributes(false); //结构：（id:<id,属性名，属性值>)
+		this.getAllRelationships(false); //结构:id,<头实体、关系、尾实体>
+
 		this.readOWLOntology(newVersion);
-		newConcepts = this.getAllConcepts(true);
-		newAttributes = this.getAllAttributes(true);
-		newRelationships = this.getAllRelationships(true);
+		this.getAllConcepts(true);
+		this.getAllAttributes(true);
+		this.getAllRelationships(true);
 		
 		this.computeBasicConceptChanges(oldConcepts, newConcepts, oldAttributes, newAttributes);
 		this.computeBasicRelationshipChanges(oldRelationships, newRelationships);
@@ -127,7 +199,7 @@ public class OWLManager {
 		
 		this.integrateBasicChanges();
 	}
-	
+
 	public void integrateBasicChanges() { //将更改保存至h2数据库
 		try {
 			DataBaseHandler.getInstance().executeDml("TRUNCATE TABLE "+Globals.WORKING_TABLE); //切换到change数据表
@@ -549,13 +621,12 @@ public class OWLManager {
 		objectsImport = new Vector<String[]>(); //要输出的实体表
 		attributesImport = new Vector<String[]>();//要输出的属性表
 		relationshipsImport = new Vector<String[]>();//要输出的关系表
+		matchedConcepts = new Vector<>();
+		matchedConcepts.add(new String[] {Globals.MATCHED_CONCEPT});
+		sceneConcepts = new Vector<>();
+		sceneConcepts.add(new String[]{Globals.SCENE_CONCEPT});
 
-//		relationsName.add("Serves");
-//		relationsName.add("Supports");
-//		relationsName.add("Perceives");
-//		relationsName.add("Learns");
-//		relationsName.add("Responses");
-//		relationsName.add("Makes_Decide");
+
 		HashMap<String, ImportObj> objHashMap = new HashMap<String, ImportObj>();
 		ImportSourceStructure objRelSet = new ImportSourceStructure();
 		OWLReasonerFactory reasonerFactory = new ElkReasonerFactory();
@@ -577,7 +648,7 @@ public class OWLManager {
 						attributeName = axiom.getProperty().toString();
 						attributeName = attributeName.replace("<", "");
 						attributeName = attributeName.replace(">", "");
-						attributeName = attributeName.replaceAll("http://www.godson.top/Auto"+Globals.DELIMITER,"");
+						attributeName = attributeName.replace("http://www.godson.top/Auto"+Globals.DELIMITER,"");
 						attributeValue = ((OWLLiteral) axiom.getValue()).getLiteral();
 
 						if (attributeValue.contains(".owl#")) { //NORMALISIERUNG AN # IN STRING
@@ -606,28 +677,40 @@ public class OWLManager {
 					}
 				}
 			}
-
+//			if(id != Globals.MATCHED_CONCEPT && id != Globals.SCENE_CONCEPT){
+//
+//			}
 			// add ImportObj to the objHashMap 
 			//OLD COMMENT (to get importObj directly by its id, for synonym&definition parsing) 
 			objHashMap.put(id, importObj);
 			NodeSet<OWLClass> superC =  reasoner.getSuperClasses(owlClass, true);
 			// get relationships
+			int fatherNumber = superC.getNodes().size();
 			for(Node<OWLClass> expr : superC.getNodes()){
 				String relName = null, relValue = null;
+
 				for (OWLClass cExpr: expr.getEntities()) { //寻找is_a关系，通过推理机寻找对应实体的父类，即子类 is_a 父类
+
 					if (!cExpr.isAnonymous()){
 						OWLClass rel = (OWLClass) cExpr;
 						relName = "is_a";
 						relValue = rel.getIRI().getFragment();  //IRI 即本体的编号对象，
+
 						if (relValue!=null&&relName!=null) {
-							objRelSet.addRelationship(relValue, importObj.getAccessionNumber(), relName);  //结构：头，尾，关系
+							if(fatherNumber==1&& relValue.equalsIgnoreCase(Globals.MATCHED_CONCEPT)){
+								matchedConcepts.add(new String[] {importObj.getAccessionNumber()});
+							}else if(fatherNumber==1&& relValue.equalsIgnoreCase(Globals.SCENE_CONCEPT)){
+								sceneConcepts.add(new String[] {importObj.getAccessionNumber()});
+
+							}
+							objRelSet.addRelationship(relValue, importObj.getAccessionNumber(), relName);  //结构：尾，头，关系
 						} else {
 							System.out.println("NULL VALUE");
 						}
 					}
 				}
 			}
-			Set<OWLSubClassOfAxiom> sb = ontology.getAxioms(AxiomType.SUBCLASS_OF);
+//			Set<OWLSubClassOfAxiom> sb = ontology.getAxioms(AxiomType.SUBCLASS_OF);
 			for (OWLSubClassOfAxiom op : ontology.getAxioms(AxiomType.SUBCLASS_OF)) {  //依据本体中的公理寻找其它类型关系 包含 Equivalent、Declaration、AnnotationAssertion、SubclassOf、DisjointClassOf
 				String relName = null, relValue = null;
 				if (op.getSubClass().equals(owlClass)) {
@@ -668,10 +751,10 @@ public class OWLManager {
 					//System.out.println(obj.getAccessionNumber()+" "+objAtt.getAttName()+" "+objAtt.getValue());
 					attributesImport.add(new String[] { obj.getAccessionNumber(), objAtt.getAttName(), "N/A", objAtt.getValue() });//结构：id,属性名，作用范围，值
 
-					if (objAtt.getAttName().equals("rdfs:label")) {
-						this.conceptNames.put(obj.getAccessionNumber(), objAtt.getValue()); //对于所有概念，结构：概念id，概念的属性（标签）
-						//System.out.println(obj.getAccessionNumber()+"\t"+objAtt.getValue());
-					}
+//					if (objAtt.getAttName().equals("rdfs:label")) {
+//						this.conceptNames.put(obj.getAccessionNumber(), objAtt.getValue()); //对于所有概念，结构：概念id，概念的属性（标签）
+//						//System.out.println(obj.getAccessionNumber()+"\t"+objAtt.getValue());
+//					}
 				}
 			}
 		}
@@ -701,7 +784,7 @@ public class OWLManager {
 //			}
 //		}
 //	}
-	
+
 	protected void addAttributeToTmpList(String[] newAttribute, List<String[]> attributesToImport) {
 		boolean doubleAttribute = false;
 		for (int i=0;i<attributesToImport.size();i++) {
@@ -715,56 +798,142 @@ public class OWLManager {
 			attributesToImport.add(newAttribute);
 		}
 	}
-	
-	public HashSet<String> getAllConcepts(boolean newVersion) {
+	public void getAllConcepts(boolean newVersion) {
 		HashSet<String> result = new HashSet<String>();
-		for (String[] object : this.objectsImport) {
-			result.add(object[0]);
-			if (newVersion) {
-				newVersionConceptSize++;
-			} else {
-				oldVersionConceptSize++;
+		if(!newVersion) {
+			for (String[] object : this.objectsImport) {
+				if(sceneConcepts.contains(object)) {
+					oldSceneConcepts.add(object[0]);
+					oldVersionSceneConceptSize++;
+					continue;
+				}
+				if(matchedConcepts.contains(object)){
+					oldMatchedConcepts.add(object[0]);
+					oldVersionMatchedConceptSize++;
+					continue;
+				}
+				oldATSConcepts.add(object[0]);
+				oldVersionATSConceptSize++;
+			}
+		} else{
+			for (String[] object : this.objectsImport) {
+			if(sceneConcepts.contains(object)) {
+				newSceneConcepts.add(object[0]);
+				newVersionSceneConceptSize++;
+				continue;
+			}
+			if(matchedConcepts.contains(object)){
+				newMatchedConcepts.add(object[0]);
+				newVersionMatchedConceptSize++;
+				continue;
+			}
+			newATSConcepts.add(object[0]);
+			newVersionATSConceptSize++;
+		}
+
+		}
+	}
+	public void getAllRelationships(boolean newVersion) {
+		HashMap<String, List<String[]>> result = new HashMap<String, List<String[]>>();
+		if(!newVersion) {
+			for (String[] relationship : this.relationshipsImport) {
+				String source = relationship[0];
+				List<String[]> currentRels = result.get(source);
+				if (currentRels == null) {
+					currentRels = new Vector<String[]>();
+				}
+
+				if (sceneConcepts.contains(source)) {
+					currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+					oldSceneRelationships.put(source, currentRels);
+					oldVersionSceneRelationshipSize++;
+					continue;
+				}
+				if (matchedConcepts.contains(source)) {
+					currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+					oldMatchedRelationships.put(source, currentRels);
+					oldVersionMatchedRelationshipSize++;
+					continue;
+				}
+				currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+				oldATSRelationships.put(source, currentRels);
+				oldVersionATSRelationshipSize++;
+			}
+		}else {
+			for (String[] relationship : this.relationshipsImport) {
+				String source = relationship[0];
+				List<String[]> currentRels = result.get(source);
+				if (currentRels == null) {
+					currentRels = new Vector<String[]>();
+				}
+				if (sceneConcepts.contains(source)) {
+					currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+					newSceneRelationships.put(source, currentRels);
+					newVersionSceneRelationshipSize++;
+					continue;
+				}
+				if (matchedConcepts.contains(source)) {
+					currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+					newMatchedRelationships.put(source, currentRels);
+					newVersionMatchedRelationshipSize++;
+					continue;
+				}
+				currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+				newATSRelationships.put(source, currentRels);
+				newVersionATSRelationshipSize++;
 			}
 		}
-		return result;
 	}
 	
-	public HashMap<String, List<String[]>> getAllRelationships(boolean newVersion) {
+	public void getAllAttributes(boolean newVersion) {
 		HashMap<String, List<String[]>> result = new HashMap<String, List<String[]>>();
-		for (String[] relationship : this.relationshipsImport) {
-			String source = relationship[0];
-			List<String[]> currentRels = result.get(source);
-			if (currentRels==null) {
-				currentRels = new Vector<String[]>();
+		if(!newVersion) {
+			for (String[] attribute : this.attributesImport) {
+				String source = attribute[0];
+				List<String[]> currentRels = result.get(source);
+				if (currentRels == null) {
+					currentRels = new Vector<String[]>();
+				}
+				if (sceneConcepts.contains(source)) {
+					currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
+					oldSceneAttributes.put(source, currentRels);
+					oldVersionSceneAttributeSize++;
+					continue;
+				}
+				if (matchedConcepts.contains(source)) {
+					currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
+					oldMatchedAttributes.put(source, currentRels);
+					oldVersionMatchedAttributeSize++;
+					continue;
+				}
+				currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
+				oldATSAttributes.put(source, currentRels);
+				oldVersionATSAttributeSize++;
 			}
-			currentRels.add(new String[]{relationship[0],relationship[2],relationship[1]});
-			result.put(source, currentRels);
-			if (newVersion) {
-				newVersionRelationshipSize++;
-			} else {
-				oldVersionRelationshipSize++;
+		}else {
+			for (String[] attribute : this.attributesImport) {
+				String source = attribute[0];
+				List<String[]> currentRels = result.get(source);
+				if (currentRels == null) {
+					currentRels = new Vector<String[]>();
+				}
+				if (sceneConcepts.contains(source)) {
+					currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
+					newSceneAttributes.put(source, currentRels);
+					newVersionSceneAttributeSize++;
+					continue;
+				}
+				if (matchedConcepts.contains(source)) {
+					currentRels.add(new String[]{attribute[0], attribute[0], attribute[3]});
+					newMatchedAttributes.put(source, currentRels);
+					newVersionMatchedAttributeSize++;
+					continue;
+				}
+				currentRels.add(new String[]{attribute[0], attribute[0], attribute[3]});
+				newATSAttributes.put(source, currentRels);
+				newVersionATSAttributeSize++;
 			}
 		}
-		return result;
-	}
-	
-	public HashMap<String, List<String[]>> getAllAttributes(boolean newVersion) {
-		HashMap<String, List<String[]>> result = new HashMap<String, List<String[]>>();
-		for (String[] attribute : this.attributesImport) {
-			String source = attribute[0];
-			List<String[]> currentAtts = result.get(source);
-			if (currentAtts==null) {
-				currentAtts = new Vector<String[]>();
-			}
-			currentAtts.add(new String[]{attribute[0],attribute[1],attribute[3]});
-			result.put(source, currentAtts);
-			if (newVersion) {
-				newVersionAttributeSize++;
-			} else {
-				oldVersionAttributeSize++;
-			}
-		}
-		return result;
 	}
 	
 	private void handleSplitMappings() {
