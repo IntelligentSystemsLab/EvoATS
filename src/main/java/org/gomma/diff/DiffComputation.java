@@ -59,12 +59,12 @@ public class DiffComputation {
         diffResult.computeDependenciesForBasicChanges();
 
         // Set version sizes
-        diffResult.newVersionConceptSize = owl.newVersionConceptSize;
-        diffResult.newVersionRelationshipSize = owl.newVersionRelationshipSize;
-        diffResult.newVersionAttributeSize = owl.newVersionAttributeSize;
-        diffResult.oldVersionConceptSize = owl.oldVersionConceptSize;
-        diffResult.oldVersionRelationshipSize = owl.oldVersionRelationshipSize;
-        diffResult.oldVersionAttributeSize = owl.oldVersionAttributeSize;
+        diffResult.newVersionConceptSize = owl.getNewVersionConceptSize();
+        diffResult.newVersionRelationshipSize = owl.getNewVersionRelationshipSize();
+        diffResult.newVersionAttributeSize = owl.getNewVersionAttributeSize();
+        diffResult.oldVersionConceptSize = owl.getOldVersionConceptSize();
+        diffResult.oldVersionRelationshipSize = owl.getOldVersionRelationshipSize();
+        diffResult.oldVersionAttributeSize = owl.getOldVersionAttributeSize();
 
         // Clean repository
         DiffExecutor.getSingleton().destroyRepository();

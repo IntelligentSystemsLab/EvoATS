@@ -19,6 +19,9 @@
 package org.gomma.diff;
 
 public class Globals {
+	//OWL name space
+
+	public static final String BASE_URL = "http://www.godson.top/Auto";
 	//DB connection data
 	public static final String DB_URL = "jdbc:h2:./COntoDiff;MODE=MYSQL;AUTO_SERVER=TRUE";
 	
