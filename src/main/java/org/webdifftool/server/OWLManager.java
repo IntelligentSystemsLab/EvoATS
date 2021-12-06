@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 
 import org.gomma.diff.Globals;
 import org.gomma.diff.utils.DataBaseHandler;
+import org.gomma.diff.utils.DataStructuralUtil;
 import org.gomma.diff.utils.Utils;
 import org.gomma.io.importer.models.ImportObj;
 import org.gomma.io.importer.models.ImportObj.ImportObjAttribute;
@@ -69,7 +70,7 @@ public class OWLManager {
     List<String[]> attributeAdditions;
     List<String[]> attributeDeletions;
 
-    Set<String> oldConcepts = new HashSet<>();
+    HashSet<String> oldConcepts = new HashSet<>();
     Map<String, List<String[]>> oldAttributes = new HashMap<>();
     Map<String, List<String[]>> oldRelationships = new HashMap<>();
 
@@ -196,20 +197,35 @@ public class OWLManager {
 
         this.integrateBasicChanges();
     }
-    public void initSceneComponents(){
-        this.setOldConcepts(new HashSet<>());
-        this.setNewConcepts(new HashSet<>());
-        this.setOldAttributes(new HashMap<>());
-        this.setNewAttributes(new HashMap<>());
-        this.setOldRelationships(new HashMap<>());
-        this.setNewRelationships(new HashMap<>());
+
+    private void initAssistComponents(){
+        sceneConcepts = new Vector<>();
+        sceneConceptsList = new Vector<>();
+        matchedConcepts = new Vector<>();
+        matchedConceptsList = new Vector<>();
+    }
+    public void parseOntology(OWLOntology V1,OWLOntology V2){
+
+        initAssistComponents();
+        this.readOWLOntology(V1);
+        this.getAllConcepts(false); //结构：id
+        this.getAllAttributes(false); //结构：（id:<id,属性名，属性值>)
+        this.getAllRelationships(false); //结构:id,<头实体、关系、尾实体>
+
+        initAssistComponents();
+        this.readOWLOntology(V2);
+        this.getAllConcepts(true); //结构：id
+        this.getAllAttributes(true); //结构：（id:<id,属性名，属性值>)
+        this.getAllRelationships(true); //结构:id,<头实体、关系、尾实体>
     }
 
-    public void parseSceneChanges(String scene){
-        initSceneComponents();
+    public void analysisBasicChange(){
+        this.computeBasicConceptChanges(oldConcepts, newConcepts, oldAttributes, newAttributes);
+        this.computeBasicRelationshipChanges(oldRelationships, newRelationships);
+        this.computeBasicAttributeChanges(oldAttributes, newAttributes);
 
+        this.integrateBasicChanges();
     }
-
     public void parseAndIntegrateChanges(OWLOntology oldVersion, OWLOntology newVersion) {
         this.conceptNames = new HashMap<String, String>();
 
@@ -218,22 +234,362 @@ public class OWLManager {
         this.getAllAttributes(false); //结构：（id:<id,属性名，属性值>)
         this.getAllRelationships(false); //结构:id,<头实体、关系、尾实体>
 
+//        this.setOldConcepts((HashSet<String>) this.getOldATSConcepts());
+//        this.setOldRelationships(this.getOldATSRelationships());
+//        this.setOldAttributes(this.getOldATSAttributes());
 
         this.readOWLOntology(newVersion);
         this.getAllConcepts(true);
         this.getAllAttributes(true);
         this.getAllRelationships(true);
 
+//        this.setNewConcepts((HashSet<String>) this.getNewATSConcepts());
+//        this.setNewRelationships(this.getNewATSRelationships());
+//        this.setNewAttributes(this.getNewATSAttributes());
+        
         this.computeBasicConceptChanges(oldConcepts, newConcepts, oldAttributes, newAttributes);
         this.computeBasicRelationshipChanges(oldRelationships, newRelationships);
         this.computeBasicAttributeChanges(oldAttributes, newAttributes);
 
         this.integrateBasicChanges();
     }
+    public Set<String> getChildConceptsAndRelations(HashSet<String> concepts, Boolean newVersion){
+        DataStructuralUtil dsu = new DataStructuralUtil();
+        Set<String> childConcepts = new HashSet<>();
+        Set<String> conceptClone = dsu.cloneHashSet(concepts);
 
-    public void computeSceneConcepts(String scene){
+        if(!newVersion) {
+            for (List<String[]> relations : oldATSRelationships.values()) {
+                for (String[] relation : relations) {
+
+                    if (conceptClone.contains(relation[2])) {
+                        if (relation[1].equals("is_a")) {
+                            childConcepts.add(relation[0]);
+                            List<String[]> rels = oldRelationships.get(relation[0]);
+                            if (rels == null) {
+                                rels = new Vector<>();
+                            }
+                            rels.add(relation);
+                            oldConcepts.add(relation[0]);
+                            oldRelationships.put(relation[0], rels);
+                            oldVersionRelationshipSize++;
+                        }
+                    }
+                }
+            }
+            
+        } else {
+            for (List<String[]> relations : newATSRelationships.values()) {
+                for (String[] relation : relations) {
+                    if (conceptClone.contains(relation[2])) {
+                        if (relation[1].equals("is_a")) {
+                            childConcepts.add(relation[0]);
+                            List<String[]> rels = newRelationships.get(relation[0]);
+                            if (rels == null) {
+                                rels = new Vector<>();
+                            }
+                            rels.add(relation);
+                            newConcepts.add(relation[0]);
+                            newRelationships.put(relation[0], rels);
+                            newVersionRelationshipSize++;
+                        }
+                    }
+                }
+            }
+        }
+        
+
+        return childConcepts;
 
     }
+    public Set<String> getFatherConceptsAndRelations(HashSet<String> concepts, Boolean newVersion){
+        DataStructuralUtil dsu = new DataStructuralUtil();
+        Set<String> fatherConcepts = new HashSet<>();
+        Set<String> conceptClone = dsu.cloneHashSet(concepts);
+        Iterator<String> conceptIterator = conceptClone.iterator();
+        if(!newVersion){
+
+            while (conceptIterator.hasNext()) {
+                String child = conceptIterator.next();
+                if (oldATSRelationships.get(child) != null) {
+                    //获取所有概念 一一找其父类
+                    for (String[] strings : oldATSRelationships.get(child)) {
+
+                        if(strings[1].equals("is_a")) {
+                            String potentialFather = strings[2];
+                            oldConcepts.add(potentialFather);
+                            if (!(sceneConceptsList.contains(potentialFather) || matchedConceptsList.contains(potentialFather))) {
+                                fatherConcepts.add(potentialFather);
+                                List<String[]> rels = oldRelationships.get(child);
+                                if (rels == null) {
+                                    rels = new Vector<>();
+                                }
+                                rels.add(new String[]{child, "is_a", potentialFather});
+                                oldRelationships.put(child, rels);
+                                oldVersionRelationshipSize++;
+
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            while (conceptIterator.hasNext()) {
+                String child = conceptIterator.next();
+                if (newATSRelationships.get(child) != null) {
+                    //获取所有概念 一一找其父类
+                    for (String[] strings : newATSRelationships.get(child)) {
+
+                        if (strings[1].equals("is_a")) {
+                            String potentialFather = strings[2];
+                            newConcepts.add(potentialFather);
+                            if (!(sceneConceptsList.contains(potentialFather) || matchedConceptsList.contains(potentialFather))) {
+                                fatherConcepts.add(potentialFather);
+                                List<String[]> rels = newRelationships.get(child);
+                                if (rels == null) {
+                                    rels = new Vector<>();
+                                }
+                                rels.add(new String[]{child, "is_a", potentialFather});
+                                newRelationships.put(child, rels);
+                                newVersionRelationshipSize++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return fatherConcepts;
+    }
+    public HashSet<String> getLogicalRelevantConceptsAndRelationships(HashSet<String> concepts, Boolean newVersion){ //oldConcepts
+        //要求：相关概念作为头实体和尾实体的 都需要考虑在内
+        //结果：找到了相关联的概念 及其所有关系
+        DataStructuralUtil du = new DataStructuralUtil();
+        Set<String> cloneConcepts = du.cloneHashSet(concepts);
+        HashSet<String> res = new HashSet<>();
+
+        if(!newVersion){
+            for (String concept : cloneConcepts) {
+                if (oldATSRelationships.get(concept)!=null) {
+                    for (String[] relation : oldATSRelationships.get(concept)) {
+                        if (concept.equals(relation[0])) {   //所述概念为头实体时 找相关尾实体
+                            List<String[]> rels = oldRelationships.get(concept);
+                            oldConcepts.add(relation[2]);
+                            res.add(relation[2]);
+                            if (rels == null) {
+                                rels = new Vector<>();
+                            }
+                            if (!rels.contains(relation)) {
+                                rels.add(new String[]{relation[0], relation[1], relation[2]});
+                            }
+                            oldRelationships.put(concept, rels);
+                        }
+                        if (concept.equals(relation[2])) { //所述概念为尾实体时 找相关头实体
+                            List<String[]> rels = oldRelationships.get(relation[0]);
+                            oldConcepts.add(relation[0]);
+                            res.add(relation[2]);
+                            if (rels == null) {
+                                rels = new Vector<>();
+                            }
+                            if (!rels.contains(relation)) {
+                                rels.add(new String[]{relation[0], relation[1], relation[2]});
+                            }
+                            oldRelationships.put(relation[0], rels);
+                        }
+                    }
+                }
+
+            }
+
+        } else {
+            for (String concept : cloneConcepts) {
+                if(newATSRelationships.get(concept)!=null) {
+                    for (String[] relation : newATSRelationships.get(concept)) {
+                        if (concept.equals(relation[0])) {   //所述概念为头实体时 找相关尾实体
+                            List<String[]> rels = newRelationships.get(concept);
+                            newConcepts.add(relation[2]);
+                            res.add(relation[2]);
+                            if (rels == null) {
+                                rels = new Vector<>();
+                            }
+                            if (!rels.contains(relation)) {
+                                rels.add(new String[]{relation[0], relation[1], relation[2]});
+                            }
+                            newRelationships.put(concept, rels);
+                        }
+                        if (concept.equals(relation[2])) { //所述概念为尾实体时 找相关头实体
+                            List<String[]> rels = newRelationships.get(relation[0]);
+                            newConcepts.add(relation[0]);
+                            res.add(relation[2]);
+                            if (rels == null) {
+                                rels = new Vector<>();
+                            }
+                            if (!rels.contains(relation)) {
+                                rels.add(new String[]{relation[0], relation[1], relation[2]});
+                            }
+                            newRelationships.put(relation[0], rels);
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    public void getComponentAttributes(Boolean newVersion){
+        if(!newVersion){
+            Iterator<String> it = oldConcepts.iterator();
+            while(it.hasNext()) {
+                String concept = it.next();
+                if (newATSAttributes.get(concept) != null) {
+                    oldAttributes.put(concept, oldATSAttributes.get(concept));
+                }
+            }
+
+        }
+        else {
+            Iterator<String> it = newConcepts.iterator();
+            while(it.hasNext()) {
+                String concept = it.next();
+                if (newATSAttributes.get(concept) != null) {
+                    newAttributes.put(concept, newATSAttributes.get(concept));
+                }
+            }
+        }
+
+    }
+    public void removeDuplicateRelations(Boolean newVersion) {
+        if (newVersion) {
+            for (String key : oldRelationships.keySet()) {
+                List<String[]> rels = oldRelationships.get(key);
+                HashSet<String[]> set = new HashSet(rels);
+                rels.clear();
+                rels.addAll(set);
+            }
+        } else {
+            for (String key : newRelationships.keySet()) {
+                List<String[]> rels = newRelationships.get(key);
+                HashSet<String[]> set = new HashSet(rels);
+                rels.clear();
+                rels.addAll(set);
+            }
+        }
+    }
+    public void computeSceneElements(String scene,Boolean newVersion,int layer){
+        //要求：直接关联场景要素的子类 父类 相关的概念及其父类 这些概念的所有关系和属性
+        HashSet<String> assertedConcepts = new HashSet<>();
+        int i = 0;
+        if(!newVersion) {
+            //关联场景的所有要素
+            for (String[] strings : oldSceneRelationships.get(scene)) {
+                oldConcepts.add(strings[0]);
+                //加入直接关联的场景要素
+                assertedConcepts.add(strings[0]);  //暂存 因为不需要对子类找更多的父类
+            }
+
+            getLogicalRelevantConceptsAndRelationships(assertedConcepts, newVersion);  //找到直接相关的逻辑上相关的要素
+
+            Set<String> assertedChildren = getChildConceptsAndRelations(assertedConcepts, newVersion);  //找子类
+
+            while (assertedChildren.size() > 0) {   //递归寻找子类
+                getLogicalRelevantConceptsAndRelationships((HashSet<String>) assertedChildren, newVersion);   //找子类逻辑上相关的要素
+                HashSet<String> assertedFather = new HashSet<>();
+                for (String res : assertedChildren) {
+                    assertedConcepts.add(res);
+                    assertedFather.add(res);
+                }
+                assertedChildren = getChildConceptsAndRelations(assertedFather, newVersion);
+            }
+
+
+            Set<String> fathers = getFatherConceptsAndRelations(oldConcepts, newVersion);
+            HashSet<String> logicalRelevantConcept = new HashSet<>();
+            if (layer > 0) {
+                logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
+            }
+
+            while (fathers.size() > 0) {
+
+                HashSet<String> children = new HashSet<>();
+                for (String res : fathers) {
+                    oldConcepts.add(res);
+                    children.add(res);
+                }
+                for (String res : logicalRelevantConcept) {
+                    children.add(res);
+                }
+
+                fathers = getFatherConceptsAndRelations(children, newVersion);   //循环寻找父类
+                layer--;
+                if (layer > 0) {
+                    logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
+                }
+                i++;    //TODO：判断退出条件
+                if(i>10){
+                    break;
+                }
+
+            }
+        } else {
+            //关联场景的所有要素
+            for (String[] strings : newSceneRelationships.get(scene)) {
+                newConcepts.add(strings[0]);
+                //加入直接关联的场景要素
+                assertedConcepts.add(strings[0]);  //暂存 因为不需要对子类找更多的父类
+            }
+
+            getLogicalRelevantConceptsAndRelationships(assertedConcepts, newVersion);  //找到直接相关的逻辑上相关的要素
+
+            Set<String> assertedChildren = getChildConceptsAndRelations(assertedConcepts, newVersion);  //找子类
+
+            while (assertedChildren.size() > 0) {   //递归寻找子类
+                getLogicalRelevantConceptsAndRelationships((HashSet<String>) assertedChildren, newVersion);   //找子类逻辑上相关的要素
+                HashSet<String> assertedFather = new HashSet<>();
+                for (String res : assertedChildren) {
+                    assertedConcepts.add(res);
+                    assertedFather.add(res);
+                }
+                assertedChildren = getChildConceptsAndRelations(assertedFather, newVersion);
+            }
+
+
+            Set<String> fathers = getFatherConceptsAndRelations((HashSet<String>) newConcepts, newVersion);
+            HashSet<String> logicalRelevantConcept = new HashSet<>();
+            if (layer > 0) {
+                logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
+            }
+
+            while (fathers.size() > 0) {
+
+                HashSet<String> children = new HashSet<>();
+                for (String res : fathers) {
+                    newConcepts.add(res);
+                    children.add(res);
+                }
+                for (String res : logicalRelevantConcept) {
+                    children.add(res);
+                }
+
+                fathers = getFatherConceptsAndRelations(children, newVersion);   //循环寻找父类
+                layer--;
+                if (layer > 0) {
+                    logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
+                }
+                i++;    //TODO：判断退出条件
+                if(i>10){
+                    break;
+                }
+
+            }
+        }
+        //关系去重
+        removeDuplicateRelations(newVersion);
+
+        //找到了所有有关概念
+        getComponentAttributes(newVersion);
+
+
+    }
+
 
     public void integrateBasicChanges() { //将更改保存至h2数据库
         try {
@@ -608,7 +964,7 @@ public class OWLManager {
                         for (OWLObjectProperty oop : op.getObjectPropertiesInSignature()) {
                             relName = oop.getIRI().toString();
                             relValue = oop.getNamedProperty().getIRI().getFragment();
-                            System.out.println(relValue);
+//                            System.out.println(relValue);
                             if (relValue != null && relName != null) {
                                 objRelSet.addRelationship(relValue, importObj.getAccessionNumber(), relName); //结构：头，尾，关系
                             } else {
@@ -658,9 +1014,9 @@ public class OWLManager {
         attributesImport = new Vector<String[]>();//要输出的属性表
         relationshipsImport = new Vector<String[]>();//要输出的关系表
         matchedConcepts = new Vector<>();
-        matchedConcepts.add(new String[]{Globals.MATCHED_CONCEPT});
+//        matchedConcepts.add(new String[]{Globals.MATCHED_CONCEPT});
         sceneConcepts = new Vector<>();
-        sceneConcepts.add(new String[]{Globals.SCENE_CONCEPT});
+//        sceneConcepts.add(new String[]{Globals.SCENE_CONCEPT});
 
 
         HashMap<String, ImportObj> objHashMap = new HashMap<String, ImportObj>();
@@ -842,38 +1198,42 @@ public class OWLManager {
     }
 
     public void getAllConcepts(boolean newVersion) {
-        HashSet<String> result = new HashSet<String>();
 
         if (!newVersion) {
             for (String[] object : this.objectsImport) {
-                if (sceneConceptsList.contains(object)) {
-                    oldSceneConcepts.add(object[0]);
+                if (sceneConceptsList.contains(object[0])) {
+                    oldSceneConcepts.add(object[0]);    //代表场景分类的实体
                     oldVersionSceneConceptSize++;
                     continue;
                 }
-                if (matchedConceptsList.contains(object)) {
-                    oldMatchedConcepts.add(object[0]);
+                if (matchedConceptsList.contains(object[0])) {
+                    oldMatchedConcepts.add(object[0]);  //代表存在映射的实体
                     oldVersionMatchedConceptSize++;
                     continue;
                 }
-                oldATSConcepts.add(object[0]);
-                oldVersionATSConceptSize++;
+                if(!(object.equals(Globals.SCENE_CONCEPT)||object.equals(Globals.MATCHED_CONCEPT)||object.equals("Thing")))
+                {
+                    oldATSConcepts.add(object[0]);
+                    oldVersionATSConceptSize++;
+                }
             }
 
         } else {
             for (String[] object : this.objectsImport) {
-                if (sceneConceptsList.contains(object)) {
+                if (sceneConceptsList.contains(object[0])) {
                     newSceneConcepts.add(object[0]);
                     newVersionSceneConceptSize++;
                     continue;
                 }
-                if (matchedConceptsList.contains(object)) {
+                if (matchedConceptsList.contains(object[0])) {
                     newMatchedConcepts.add(object[0]);
                     newVersionMatchedConceptSize++;
                     continue;
                 }
-                newATSConcepts.add(object[0]);
-                newVersionATSConceptSize++;
+                if(!(object.equals(Globals.SCENE_CONCEPT)||object.equals(Globals.MATCHED_CONCEPT)||object.equals("Thing"))) {
+                    newATSConcepts.add(object[0]);
+                    newVersionATSConceptSize++;
+                }
             }
 
         }
@@ -910,21 +1270,23 @@ public class OWLManager {
                 if (!relationship[2].equalsIgnoreCase("is_a")) {
                     continue;
                 }
-                String target = relationship[1];
-                List<String[]> rels = allRelations.get(target);
-                if (rels == null) {
-                    rels = new Vector<String[]>();
-                }
-                if (sceneConceptsList.contains(target)) {
-                    rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                    oldSceneRelationships.put(target,rels);
-                    allRelations.put(target,rels);
-                }
+                if(oldSceneConcepts.contains(relationship[1])||oldMatchedConcepts.contains(relationship[1])) {
+                    String target = relationship[1];
+                    List<String[]> rels = allRelations.get(target);
+                    if (rels == null) {
+                        rels = new Vector<String[]>();
+                    }
+                    if (sceneConceptsList.contains(target)) {
+                        rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+                        oldSceneRelationships.put(target, rels);
+                        allRelations.put(target, rels);
+                    }
 
-                if (matchedConceptsList.contains(target)) {
-                    rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                    oldMatchedRelationships.put(target, rels);
-                    allRelations.put(target,rels);
+                    if (matchedConceptsList.contains(target)) {
+                        rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+                        oldMatchedRelationships.put(target, rels);
+                        allRelations.put(target, rels);
+                    }
                 }
 
                 }
@@ -936,17 +1298,16 @@ public class OWLManager {
                 if (currentRels == null) {
                     currentRels = new Vector<String[]>();
                 }
+
                 if (sceneConceptsList.contains(source)) {
                     currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
                     newStructuralSceneRelationships.put(source, currentRels);
-
                     allRelations.put(source, currentRels);
                     continue;
                 }
                 if (matchedConceptsList.contains(source)) {
                     currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
                     newStructuralMatchedRelationships.put(source, currentRels);
-
                     allRelations.put(source, currentRels);
                     continue;
                 }
@@ -955,25 +1316,31 @@ public class OWLManager {
                 newVersionATSRelationshipSize++;
                 allRelations.put(source, currentRels);
 
-                String target = relationship[1];
-                List<String[]> rels = allRelations.get(target);
-                if (rels == null) {
-                    rels = new Vector<String[]>();
+                if (!relationship[2].equalsIgnoreCase("is_a")) {
+                    continue;
+                }
+                if(newSceneConcepts.contains(relationship[1])||newMatchedConcepts.contains(relationship[1])) {
+                    String target = relationship[1];
+                    List<String[]> rels = allRelations.get(target);
+                    if (rels == null) {
+                        rels = new Vector<String[]>();
+                    }
                     if (sceneConceptsList.contains(target)) {
                         rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                        newSceneRelationships.put(source, currentRels);
-                        allRelations.put(target,rels);
+                        newSceneRelationships.put(target, rels);
+                        allRelations.put(target, rels);
                     }
 
                     if (matchedConceptsList.contains(target)) {
                         rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                        newMatchedRelationships.put(source, currentRels);
-                        allRelations.put(target,rels);
+                        newMatchedRelationships.put(target, rels);
+                        allRelations.put(target, rels);
                     }
                 }
+
             }
         }
-    }
+        }
 
     public void getAllAttributes(boolean newVersion) {
         HashMap<String, List<String[]>> result = new HashMap<String, List<String[]>>();
@@ -1261,7 +1628,7 @@ public class OWLManager {
         return oldConcepts;
     }
 
-    public void setOldConcepts(Set<String> oldConcepts) {
+    public void setOldConcepts(HashSet<String> oldConcepts) {
         this.oldConcepts = oldConcepts;
     }
 

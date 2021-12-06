@@ -41,6 +41,11 @@ public class DiffComputation {
 
         System.out.println("Loading ontology versions");
         owl.parseAndIntegrateChanges(first, second);
+
+
+        owl.setNewConcepts((HashSet<String>) owl.getNewATSConcepts());
+        owl.setNewRelationships(owl.getNewATSRelationships());
+        owl.setNewAttributes(owl.getNewATSAttributes());
 //		owl.parseAndIntegrateChanges(owl.getOBOContentFromFile(oldVersion), owl.getOBOContentFromFile(newVersion));
 
         Map<String, String> conceptNames = owl.conceptNames; //obo文件中没有定义概念（rdfs:label）
@@ -74,13 +79,13 @@ public class DiffComputation {
         return diffResult;
     }
 
-    private void loadConfigForDiffExecutor() {
+    void loadConfigForDiffExecutor() {
         // System.out.println("Call from: "+getThreadLocalRequest().getRemoteHost());
         DiffExecutor.getSingleton().loadChangeActionDesc("rules/ChangeActions.xml"); //载入演化行为
         DiffExecutor.getSingleton().loadRules("rules/Rule_OWL.xml");//载入演化规则
     }
 
-    private HashMap<String, Change> getFullDiffMapping(Map<String, String> acc2Name) {
+    HashMap<String, Change> getFullDiffMapping(Map<String, String> acc2Name) {
         HashMap<String, Change> result = new HashMap<String, Change>();
         DiffExecutor diffExec = DiffExecutor.getSingleton();
         for (ActionData change : diffExec.lowLevelActions) {
@@ -119,7 +124,7 @@ public class DiffComputation {
         return result;
     }
 
-    private void computeWordFrequencies(DiffEvolutionMapping diffResult) {
+    void computeWordFrequencies(DiffEvolutionMapping diffResult) {
         // String fullText = diffResult.getFulltextOfCompactDiff();
         // System.out.println(fullText);
         Map<String, Integer> wordFrequencies = new HashMap<String, Integer>();
@@ -204,7 +209,7 @@ public class DiffComputation {
         return new Change(md5Key, name, changeValues);
     }
 
-    private Map<String, List<String>> getCompactDiffMapping() {
+    Map<String, List<String>> getCompactDiffMapping() {
         Map<String, List<String>> result = new HashMap<String, List<String>>();
         Set<String> allDependantChanges = new HashSet<String>();
         DiffExecutor diffExec = DiffExecutor.getSingleton();
@@ -237,7 +242,7 @@ public class DiffComputation {
         return result;
     }
 
-    private Map<String, List<String>> getBasicDiffMapping() {
+    Map<String, List<String>> getBasicDiffMapping() {
         HashMap<String, List<String>> result = new HashMap<String, List<String>>();
         DiffExecutor diffExec = DiffExecutor.getSingleton();
 
