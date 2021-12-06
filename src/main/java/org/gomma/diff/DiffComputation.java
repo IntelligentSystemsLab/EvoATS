@@ -79,13 +79,13 @@ public class DiffComputation {
         return diffResult;
     }
 
-    void loadConfigForDiffExecutor() {
+    public void loadConfigForDiffExecutor() {
         // System.out.println("Call from: "+getThreadLocalRequest().getRemoteHost());
         DiffExecutor.getSingleton().loadChangeActionDesc("rules/ChangeActions.xml"); //载入演化行为
         DiffExecutor.getSingleton().loadRules("rules/Rule_OWL.xml");//载入演化规则
     }
 
-    HashMap<String, Change> getFullDiffMapping(Map<String, String> acc2Name) {
+    public HashMap<String, Change> getFullDiffMapping(Map<String, String> acc2Name) {
         HashMap<String, Change> result = new HashMap<String, Change>();
         DiffExecutor diffExec = DiffExecutor.getSingleton();
         for (ActionData change : diffExec.lowLevelActions) {
@@ -124,7 +124,7 @@ public class DiffComputation {
         return result;
     }
 
-    void computeWordFrequencies(DiffEvolutionMapping diffResult) {
+    public void computeWordFrequencies(DiffEvolutionMapping diffResult) {
         // String fullText = diffResult.getFulltextOfCompactDiff();
         // System.out.println(fullText);
         Map<String, Integer> wordFrequencies = new HashMap<String, Integer>();
@@ -209,7 +209,7 @@ public class DiffComputation {
         return new Change(md5Key, name, changeValues);
     }
 
-    Map<String, List<String>> getCompactDiffMapping() {
+    public Map<String, List<String>> getCompactDiffMapping() {
         Map<String, List<String>> result = new HashMap<String, List<String>>();
         Set<String> allDependantChanges = new HashSet<String>();
         DiffExecutor diffExec = DiffExecutor.getSingleton();
@@ -242,7 +242,7 @@ public class DiffComputation {
         return result;
     }
 
-    Map<String, List<String>> getBasicDiffMapping() {
+    public Map<String, List<String>> getBasicDiffMapping() {
         HashMap<String, List<String>> result = new HashMap<String, List<String>>();
         DiffExecutor diffExec = DiffExecutor.getSingleton();
 

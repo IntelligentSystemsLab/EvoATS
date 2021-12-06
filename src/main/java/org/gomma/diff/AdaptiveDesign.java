@@ -10,13 +10,14 @@ import uk.ac.manchester.cs.owl.owlapi.OWLOntologyImpl;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 public class AdaptiveDesign {
 
     public static void main(String[] args) throws OWLOntologyCreationException, IOException {
-        FileWriter output = new FileWriter("output.txt");
+        FileWriter output = new FileWriter("output1.txt");
         OntologyReader reader = new OntologyReader();
         OWLOntology first = reader.loadOntology(new File(Globals.V1));
         OWLOntology second = reader.loadOntology(new File(Globals.V2));
@@ -42,8 +43,9 @@ public class AdaptiveDesign {
         owl.computeSceneElements(scene,true, 2);
         owl.analysisBasicChange();
 //		owl.parseAndIntegrateChanges(owl.getOBOContentFromFile(oldVersion), owl.getOBOContentFromFile(newVersion));
-
+        owl.setConceptNames(new HashMap<>());
         Map<String, String> conceptNames = owl.conceptNames; //obo文件中没有定义概念（rdfs:label）
+
         System.out.println("Loading rules");
         dc.loadConfigForDiffExecutor();
         System.out.println("Applying rules");

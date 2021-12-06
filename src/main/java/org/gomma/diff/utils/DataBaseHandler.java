@@ -91,8 +91,6 @@ public class DataBaseHandler {
 		dbCon = this.getDatabaseConnection();
 		stmt = dbCon.createStatement();
 		affectedRows = stmt.executeUpdate(dmlQuery);
-		stmt.close();
-		dbCon.close();
 		
 		return(affectedRows);
 	}
