@@ -7,14 +7,18 @@ import org.webdifftool.server.OWLManager;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.List;
 
 public class OntologyCreateUtil {
     static String base = Globals.BASE_URL+Globals.DELIMITER;
     static PrefixManager pm = new DefaultPrefixManager(base);
     static OWLOntologyManager m = org.semanticweb.owlapi.apibinding.OWLManager.createOWLOntologyManager();
+    static OWLManager owl;
+    public OntologyCreateUtil(OWLManager owl){
+        this.owl = owl;
+    }
 
-    public OWLOntology createOntology(String scene,String version) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
+    public OWLOntology createOntology(String scene,int version) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
 
         IRI sceneOntologyIRI = IRI.create(base+scene+".owl");
 
@@ -24,20 +28,34 @@ public class OntologyCreateUtil {
         return sceneOntology;
     }
 
-    public void addATSSceneComponents(OWLOntology ontology, OWLManager owl, Boolean newVersion){
+    public void addATSSceneComponents(OWLOntology ontology){
         OWLDataFactory factory = m.getOWLDataFactory();
-        if(!newVersion) {
-            Iterator<String> it = owl.getOldATSConcepts().iterator();
-            while (it.hasNext()) {
-                m.addAxiom(ontology, factory.getOWLDeclarationAxiom(factory.getOWLClass(it.next(), pm)));
+            for (String s : owl.getConcepts()) { //add Concepts
+                m.addAxiom(ontology, factory.getOWLDeclarationAxiom(factory.getOWLClass(s, pm)));
             }
-        }
-        else {
-            Iterator<String> it = owl.getNewATSConcepts().iterator();
-            while (it.hasNext()) {
-                m.addAxiom(ontology, factory.getOWLDeclarationAxiom(factory.getOWLClass(it.next(), pm)));
+            for(List<String[]> ls : owl.getAttributes().values()){ //add Attributes
+                for(String[] s : ls){
+//                    if(s[1].contains("ats")){
+//                        continue;
+//                    }
+                    OWLAnnotationProperty oap = factory.getOWLAnnotationProperty(s[1],pm);
+                    m.addAxiom(ontology,factory.getOWLAnnotationAssertionAxiom(factory.getOWLClass(s[0],pm).getIRI(),factory.getOWLAnnotation(oap,factory.getOWLLiteral(s[2]))));
+                }
             }
-        }
+            for (List<String[]> ls : owl.getRelationships().values()){
+                for(String[] s : ls){
+                    if(!(s[1].equals("is_a"))){
+                        m.addAxiom(ontology,factory.getOWLSubClassOfAxiom(factory.getOWLClass(s[0],pm),factory.getOWLObjectSomeValuesFrom(factory.getOWLObjectProperty(s[1],pm),factory.getOWLClass(s[2],pm))));
+                    } else {
+                        m.addAxiom(ontology,factory.getOWLSubClassOfAxiom(factory.getOWLClass(s[0],pm),factory.getOWLClass(s[2],pm)));
+                    }
+                }
+            }
+        
+    }
+    public void outputOntology(OWLOntology ontology,String outputLocation) throws OWLOntologyStorageException, IOException {
+        File file = new File(outputLocation+".owl");
+        m.saveOntology(ontology,IRI.create(file.toURI()));
     }
 
 
@@ -48,6 +66,10 @@ public class OntologyCreateUtil {
 }
 class Main{
     public static void main(String[] args) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
+//        OntologyCreateUtil ocu = new OntologyCreateUtil();
+//        OWLOntology ont = ocu.createOntology("scene","v1");
+
+
 
 
 

@@ -26,7 +26,7 @@ import java.util.List;
 
 import org.gomma.diff.Globals;
 
-public class Utils {
+public class DiffUtil {
 	
 	private static String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();

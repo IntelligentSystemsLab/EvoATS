@@ -24,6 +24,7 @@ import org.webdifftool.client.model.DiffEvolutionMapping;
 import org.webdifftool.client.model.changes.Change;
 import org.webdifftool.client.model.changes.basic.*;
 import org.webdifftool.client.model.changes.complex.*;
+import org.webdifftool.server.BasicDiffManager;
 import org.webdifftool.server.OWLManager;
 import org.webdifftool.server.StopWords;
 
@@ -32,52 +33,52 @@ import java.util.*;
 public class DiffComputation {
 
 
-    public DiffEvolutionMapping computeDiff(OWLOntology first, OWLOntology second) {
-        String prefix = String.valueOf(Math.abs(new Random().nextLong()));
-        //Globals.addPrefix(prefix);
-        DiffExecutor.getSingleton().setupRepository();
-
-        OWLManager owl = new OWLManager();
-
-        System.out.println("Loading ontology versions");
-        owl.parseAndIntegrateChanges(first, second);
-
-
-        owl.setNewConcepts((HashSet<String>) owl.getNewATSConcepts());
-        owl.setNewRelationships(owl.getNewATSRelationships());
-        owl.setNewAttributes(owl.getNewATSAttributes());
-//		owl.parseAndIntegrateChanges(owl.getOBOContentFromFile(oldVersion), owl.getOBOContentFromFile(newVersion));
-
-        Map<String, String> conceptNames = owl.conceptNames; //obo文件中没有定义概念（rdfs:label）
-        System.out.println("Loading rules");
-        this.loadConfigForDiffExecutor();
-        System.out.println("Applying rules");
-        DiffExecutor.getSingleton().applyRules();
-        // currentStatus = "Aggregation of changes";
-        System.out.println("Aggregation of changes");
-        DiffExecutor.getSingleton().mergeResultActions();
-        // currentStatus = "Building of final diff result";
-        System.out.println("Building of final diff result");
-        DiffExecutor.getSingleton().retrieveAndStoreHighLevelActions();
-        DiffEvolutionMapping diffResult = new DiffEvolutionMapping(this.getFullDiffMapping(conceptNames), this.getCompactDiffMapping(), this.getBasicDiffMapping());
-        this.computeWordFrequencies(diffResult);
-        diffResult.computeDependenciesForBasicChanges();
-
-        // Set version sizes
-        diffResult.newVersionConceptSize = owl.getNewVersionConceptSize();
-        diffResult.newVersionRelationshipSize = owl.getNewVersionRelationshipSize();
-        diffResult.newVersionAttributeSize = owl.getNewVersionAttributeSize();
-        diffResult.oldVersionConceptSize = owl.getOldVersionConceptSize();
-        diffResult.oldVersionRelationshipSize = owl.getOldVersionRelationshipSize();
-        diffResult.oldVersionAttributeSize = owl.getOldVersionAttributeSize();
-
-        // Clean repository
-        DiffExecutor.getSingleton().destroyRepository();
-
-        // currentStatus = "Sending results";
-        System.out.println("Sending results");
-        return diffResult;
-    }
+//    public DiffEvolutionMapping computeDiff(OWLOntology first, OWLOntology second) {
+//        String prefix = String.valueOf(Math.abs(new Random().nextLong()));
+//        //Globals.addPrefix(prefix);
+//        DiffExecutor.getSingleton().setupRepository();
+//
+//        OWLManager owl = new OWLManager();
+//
+//        System.out.println("Loading ontology versions");
+//        owl.parseAndIntegrateChanges(first, second);
+//
+//
+//        owl.setNewConcepts((HashSet<String>) owl.getNewATSConcepts());
+//        owl.setNewRelationships(owl.getNewATSRelationships());
+//        owl.setNewAttributes(owl.getNewATSAttributes());
+////		owl.parseAndIntegrateChanges(owl.getOBOContentFromFile(oldVersion), owl.getOBOContentFromFile(newVersion));
+//
+//        Map<String, String> conceptNames = owl.conceptNames; //obo文件中没有定义概念（rdfs:label）
+//        System.out.println("Loading rules");
+//        this.loadConfigForDiffExecutor();
+//        System.out.println("Applying rules");
+//        DiffExecutor.getSingleton().applyRules();
+//        // currentStatus = "Aggregation of changes";
+//        System.out.println("Aggregation of changes");
+//        DiffExecutor.getSingleton().mergeResultActions();
+//        // currentStatus = "Building of final diff result";
+//        System.out.println("Building of final diff result");
+//        DiffExecutor.getSingleton().retrieveAndStoreHighLevelActions();
+//        DiffEvolutionMapping diffResult = new DiffEvolutionMapping(this.getFullDiffMapping(conceptNames), this.getCompactDiffMapping(), this.getBasicDiffMapping());
+//        this.computeWordFrequencies(diffResult);
+//        diffResult.computeDependenciesForBasicChanges();
+//
+//        // Set version sizes
+//        diffResult.newVersionConceptSize = owl.getNewVersionConceptSize();
+//        diffResult.newVersionRelationshipSize = owl.getNewVersionRelationshipSize();
+//        diffResult.newVersionAttributeSize = owl.getNewVersionAttributeSize();
+//        diffResult.oldVersionConceptSize = owl.getOldVersionConceptSize();
+//        diffResult.oldVersionRelationshipSize = owl.getOldVersionRelationshipSize();
+//        diffResult.oldVersionAttributeSize = owl.getOldVersionAttributeSize();
+//
+//        // Clean repository
+//        DiffExecutor.getSingleton().destroyRepository();
+//
+//        // currentStatus = "Sending results";
+//        System.out.println("Sending results");
+//        return diffResult;
+//    }
 
     public void loadConfigForDiffExecutor() {
         // System.out.println("Call from: "+getThreadLocalRequest().getRemoteHost());

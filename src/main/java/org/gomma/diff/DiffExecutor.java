@@ -37,7 +37,7 @@ import org.gomma.diff.model.Type;
 import org.gomma.diff.parser.ActionParser;
 import org.gomma.diff.parser.RuleParser;
 import org.gomma.diff.utils.DataBaseHandler;
-import org.gomma.diff.utils.Utils;
+import org.gomma.diff.utils.DiffUtil;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -264,7 +264,7 @@ public class DiffExecutor {
 						for (int j=0;j<currentActionDesc.paramTypes.size();j++) {
 							String currentValue = rs.getString(currentIndex++);
 							if (currentActionDesc.multipleValues.get(j)) {
-								currentValue = Utils.eleminateDuplicates(currentValue);
+								currentValue = DiffUtil.eleminateDuplicates(currentValue);
 							}
 							currentActionData.addDataValue(currentValue);
 						}

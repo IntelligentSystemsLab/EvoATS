@@ -31,12 +31,13 @@ import java.util.stream.Collectors;
 import org.gomma.diff.Globals;
 import org.gomma.diff.utils.DataBaseHandler;
 import org.gomma.diff.utils.DataStructuralUtil;
-import org.gomma.diff.utils.Utils;
+import org.gomma.diff.utils.DiffUtil;
 import org.gomma.io.importer.models.ImportObj;
 import org.gomma.io.importer.models.ImportObj.ImportObjAttribute;
 import org.gomma.io.importer.models.ImportSourceStructure;
 import org.gomma.io.importer.models.ImportSourceStructure.ImportObjRelationship;
 import org.gomma.model.DataTypes;
+import org.io.OntologyCreateUtil;
 import org.semanticweb.elk.owlapi.ElkReasonerFactory;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.Node;
@@ -58,102 +59,269 @@ public class OWLManager {
     List<String[]> relationshipsImport;
     List<String> relationsName;
 
-    List<String[]> conceptMaps;
-    List<String> conceptAdditions;
-    List<String> conceptDeletions;
+    public int getVersionConceptSize() {
+        return versionConceptSize;
+    }
 
-    List<String[]> relationshipMaps;
-    List<String[]> relationshipAdditions;
-    List<String[]> relationshipDeletions;
+    public void setVersionConceptSize(int versionConceptSize) {
+        this.versionConceptSize = versionConceptSize;
+    }
 
-    List<String[]> attributeMaps;
-    List<String[]> attributeAdditions;
-    List<String[]> attributeDeletions;
+    public int getVersionRelationshipSize() {
+        return versionRelationshipSize;
+    }
 
-    HashSet<String> oldConcepts = new HashSet<>();
-    Map<String, List<String[]>> oldAttributes = new HashMap<>();
-    Map<String, List<String[]>> oldRelationships = new HashMap<>();
+    public void setVersionRelationshipSize(int versionRelationshipSize) {
+        this.versionRelationshipSize = versionRelationshipSize;
+    }
 
-    Set<String> oldATSConcepts = new HashSet<>();
-    Map<String, List<String[]>> oldATSAttributes = new HashMap<>();
-    Map<String, List<String[]>> oldATSRelationships = new HashMap<>();
+    public int getVersionAttributeSize() {
+        return versionAttributeSize;
+    }
 
-    Set<String> oldSceneConcepts = new HashSet<>();
-    Map<String, List<String[]>> oldStructuralSceneAttributes = new HashMap<>();
-    Map<String, List<String[]>> oldStructuralSceneRelationships = new HashMap<>();
+    public void setVersionAttributeSize(int versionAttributeSize) {
+        this.versionAttributeSize = versionAttributeSize;
+    }
 
-    Map<String, List<String[]>> oldSceneAttributes = new HashMap<>();
-    Map<String, List<String[]>> oldSceneRelationships = new HashMap<>();
+    public int getVersionATSConceptSize() {
+        return versionATSConceptSize;
+    }
 
-    Set<String> oldMatchedConcepts = new HashSet<>();
-    Map<String, List<String[]>> oldStructuralMatchedAttributes = new HashMap<>();
-    Map<String, List<String[]>> oldStructuralMatchedRelationships = new HashMap<>();
+    public void setVersionATSConceptSize(int versionATSConceptSize) {
+        this.versionATSConceptSize = versionATSConceptSize;
+    }
 
-    Map<String, List<String[]>> oldMatchedAttributes = new HashMap<>();
-    Map<String, List<String[]>> oldMatchedRelationships = new HashMap<>();
+    public int getVersionATSRelationshipSize() {
+        return versionATSRelationshipSize;
+    }
 
-    Set<String> newConcepts = new HashSet<>();
-    Map<String, List<String[]>> newAttributes = new HashMap<>();
-    Map<String, List<String[]>> newRelationships = new HashMap<>();
+    public void setVersionATSRelationshipSize(int versionATSRelationshipSize) {
+        this.versionATSRelationshipSize = versionATSRelationshipSize;
+    }
 
-    Set<String> newATSConcepts = new HashSet<>();
-    Map<String, List<String[]>> newATSAttributes = new HashMap<>();
-    Map<String, List<String[]>> newATSRelationships = new HashMap<>();
+    public int getVersionATSAttributeSize() {
+        return versionATSAttributeSize;
+    }
 
-    Set<String> newSceneConcepts = new HashSet<>();
-    Map<String, List<String[]>> newStructuralSceneAttributes = new HashMap<>();
-    Map<String, List<String[]>> newStructuralSceneRelationships = new HashMap<>();
+    public void setVersionATSAttributeSize(int versionATSAttributeSize) {
+        this.versionATSAttributeSize = versionATSAttributeSize;
+    }
 
-    Map<String, List<String[]>> newSceneAttributes = new HashMap<>();
-    Map<String, List<String[]>> newSceneRelationships = new HashMap<>();
+    public int getVersionMatchedConceptSize() {
+        return versionMatchedConceptSize;
+    }
 
-    Set<String> newMatchedConcepts = new HashSet<>();
-    Map<String, List<String[]>> newStructuralMatchedAttributes = new HashMap<>();
-    Map<String, List<String[]>> newStructuralMatchedRelationships = new HashMap<>();
+    public void setVersionMatchedConceptSize(int versionMatchedConceptSize) {
+        this.versionMatchedConceptSize = versionMatchedConceptSize;
+    }
 
-    Map<String, List<String[]>> newMatchedAttributes = new HashMap<>();
-    Map<String, List<String[]>> newMatchedRelationships = new HashMap<>();
+    public int getVersionMatchedRelationshipSize() {
+        return versionMatchedRelationshipSize;
+    }
+
+    public void setVersionMatchedRelationshipSize(int versionMatchedRelationshipSize) {
+        this.versionMatchedRelationshipSize = versionMatchedRelationshipSize;
+    }
+
+    public int getVersionMatchedAttributeSize() {
+        return versionMatchedAttributeSize;
+    }
+
+    public void setVersionMatchedAttributeSize(int versionMatchedAttributeSize) {
+        this.versionMatchedAttributeSize = versionMatchedAttributeSize;
+    }
+
+    public int getVersionSceneConceptSize() {
+        return versionSceneConceptSize;
+    }
+
+    public void setVersionSceneConceptSize(int versionSceneConceptSize) {
+        this.versionSceneConceptSize = versionSceneConceptSize;
+    }
+
+    public int getVersionSceneRelationshipSize() {
+        return versionSceneRelationshipSize;
+    }
+
+    public void setVersionSceneRelationshipSize(int versionSceneRelationshipSize) {
+        this.versionSceneRelationshipSize = versionSceneRelationshipSize;
+    }
+
+    public int getVersionSceneAttributeSize() {
+        return versionSceneAttributeSize;
+    }
+
+    public void setVersionSceneAttributeSize(int versionSceneAttributeSize) {
+        this.versionSceneAttributeSize = versionSceneAttributeSize;
+    }
+
+    private int versionConceptSize = 0;
+    private int versionRelationshipSize = 0;
+    private int versionAttributeSize = 0;
+
+    private int versionATSConceptSize = 0;
+    private int versionATSRelationshipSize = 0;
+    private int versionATSAttributeSize = 0;
+
+    private int versionMatchedConceptSize = 0;
+    private int versionMatchedRelationshipSize = 0;
+    private int versionMatchedAttributeSize = 0;
+
+    private int versionSceneConceptSize = 0;
+    private int versionSceneRelationshipSize = 0;
+    private int versionSceneAttributeSize = 0;
+
+
+
+    public HashSet<String> getConcepts() {
+        return Concepts;
+    }
+
+    public void setConcepts(HashSet<String> concepts) {
+        Concepts = concepts;
+    }
+
+    public Map<String, List<String[]>> getAttributes() {
+        return Attributes;
+    }
+
+    public void setAttributes(Map<String, List<String[]>> attributes) {
+        Attributes = attributes;
+    }
+
+    public Map<String, List<String[]>> getRelationships() {
+        return Relationships;
+    }
+
+    public void setRelationships(Map<String, List<String[]>> relationships) {
+        Relationships = relationships;
+    }
+
+    public Set<String> getATSConcepts() {
+        return ATSConcepts;
+    }
+
+    public void setATSConcepts(Set<String> ATSConcepts) {
+        this.ATSConcepts = ATSConcepts;
+    }
+
+    public Map<String, List<String[]>> getATSAttributes() {
+        return ATSAttributes;
+    }
+
+    public void setATSAttributes(Map<String, List<String[]>> ATSAttributes) {
+        this.ATSAttributes = ATSAttributes;
+    }
+
+    public Map<String, List<String[]>> getATSRelationships() {
+        return ATSRelationships;
+    }
+
+    public void setATSRelationships(Map<String, List<String[]>> ATSRelationships) {
+        this.ATSRelationships = ATSRelationships;
+    }
+
+    public void setSceneConcepts(Set<String> sceneConcepts) {
+        SceneConcepts = sceneConcepts;
+    }
+
+    public Map<String, List<String[]>> getStructuralSceneAttributes() {
+        return StructuralSceneAttributes;
+    }
+
+    public void setStructuralSceneAttributes(Map<String, List<String[]>> structuralSceneAttributes) {
+        StructuralSceneAttributes = structuralSceneAttributes;
+    }
+
+    public Map<String, List<String[]>> getStructuralSceneRelationships() {
+        return StructuralSceneRelationships;
+    }
+
+    public void setStructuralSceneRelationships(Map<String, List<String[]>> structuralSceneRelationships) {
+        StructuralSceneRelationships = structuralSceneRelationships;
+    }
+
+    public Map<String, List<String[]>> getSceneAttributes() {
+        return SceneAttributes;
+    }
+
+    public void setSceneAttributes(Map<String, List<String[]>> sceneAttributes) {
+        SceneAttributes = sceneAttributes;
+    }
+
+    public Map<String, List<String[]>> getSceneRelationships() {
+        return SceneRelationships;
+    }
+
+    public void setSceneRelationships(Map<String, List<String[]>> sceneRelationships) {
+        SceneRelationships = sceneRelationships;
+    }
+
+
+
+    public Map<String, List<String[]>> getStructuralMatchedAttributes() {
+        return StructuralMatchedAttributes;
+    }
+
+    public void setStructuralMatchedAttributes(Map<String, List<String[]>> structuralMatchedAttributes) {
+        StructuralMatchedAttributes = structuralMatchedAttributes;
+    }
+
+    public Map<String, List<String[]>> getStructuralMatchedRelationships() {
+        return StructuralMatchedRelationships;
+    }
+
+    public void setStructuralMatchedRelationships(Map<String, List<String[]>> structuralMatchedRelationships) {
+        StructuralMatchedRelationships = structuralMatchedRelationships;
+    }
+
+    public Map<String, List<String[]>> getMatchedAttributes() {
+        return MatchedAttributes;
+    }
+
+    public void setMatchedAttributes(Map<String, List<String[]>> matchedAttributes) {
+        MatchedAttributes = matchedAttributes;
+    }
+
+    public Map<String, List<String[]>> getMatchedRelationships() {
+        return MatchedRelationships;
+    }
+
+    public void setMatchedRelationships(Map<String, List<String[]>> matchedRelationships) {
+        MatchedRelationships = matchedRelationships;
+    }
+
+    HashSet<String> Concepts = new HashSet<>();
+    Map<String, List<String[]>> Attributes = new HashMap<>();
+    Map<String, List<String[]>> Relationships = new HashMap<>();
+
+    Set<String> ATSConcepts = new HashSet<>();
+    Map<String, List<String[]>> ATSAttributes = new HashMap<>();
+    Map<String, List<String[]>> ATSRelationships = new HashMap<>();
+
+    Set<String> SceneConcepts = new HashSet<>();
+    Map<String, List<String[]>> StructuralSceneAttributes = new HashMap<>();
+    Map<String, List<String[]>> StructuralSceneRelationships = new HashMap<>();
+
+    Map<String, List<String[]>> SceneAttributes = new HashMap<>();
+    Map<String, List<String[]>> SceneRelationships = new HashMap<>();
+
+//    Set<String> MatchedConcepts = new HashSet<>();
+    Map<String, List<String[]>> StructuralMatchedAttributes = new HashMap<>();
+    Map<String, List<String[]>> StructuralMatchedRelationships = new HashMap<>();
+
+    Map<String, List<String[]>> MatchedAttributes = new HashMap<>();
+    Map<String, List<String[]>> MatchedRelationships = new HashMap<>();
+
     public Map<String, String> conceptNames;
 
     private boolean useSplitInference = true;
 
-    private int oldVersionConceptSize = 0;
-    private int oldVersionRelationshipSize = 0;
-    private int oldVersionAttributeSize = 0;
 
-    private int oldVersionATSConceptSize = 0;
-    private int oldVersionATSRelationshipSize = 0;
-    private int oldVersionATSAttributeSize = 0;
-
-    private int oldVersionMatchedConceptSize = 0;
-    private int oldVersionMatchedRelationshipSize = 0;
-    private int oldVersionMatchedAttributeSize = 0;
-
-    private int oldVersionSceneConceptSize = 0;
-    private int oldVersionSceneRelationshipSize = 0;
-    private int oldVersionSceneAttributeSize = 0;
-
-    private int newVersionConceptSize = 0;
-    private int newVersionRelationshipSize = 0;
-    private int newVersionAttributeSize = 0;
-
-    private int newVersionATSConceptSize = 0;
-    private int newVersionATSRelationshipSize = 0;
-    private int newVersionATSAttributeSize = 0;
-
-    private int newVersionMatchedConceptSize = 0;
-    private int newVersionMatchedRelationshipSize = 0;
-    private int newVersionMatchedAttributeSize = 0;
-
-    private int newVersionSceneConceptSize = 0;
-    private int newVersionSceneRelationshipSize = 0;
-    private int newVersionSceneAttributeSize = 0;
-
-
-    public static void main(String[] args) throws Exception {
-        OWLManager test = new OWLManager();
-        test.parseAndIntegrateChanges("http://dbserv2.informatik.uni-leipzig.de/~hartung/MA_1-197.owl", "http://dbserv2.informatik.uni-leipzig.de/~hartung/MA_1-206.owl");
-    }
+//    public static void main(String[] args) throws Exception {
+//        OWLManager test = new OWLManager();
+//        test.parseAndIntegrateChanges("http://dbserv2.informatik.uni-leipzig.de/~hartung/MA_1-197.owl", "http://dbserv2.informatik.uni-leipzig.de/~hartung/MA_1-206.owl");
+//    }
 
     public void getAssistConcept(OWLOntology ontology) { //用于获取非ATS组分的那些实体
         OWLReasonerFactory reasonerFactory = new ElkReasonerFactory();
@@ -178,181 +346,89 @@ public class OWLManager {
 //		}
     }
 
-    public void parseAndIntegrateChanges(String oldVersionString, String newVersionString) {
-        this.conceptNames = new HashMap<String, String>();
+    public void parseOntology(OWLOntology Ontology) {
 
-        this.readOWLString(oldVersionString);
-        this.getAllConcepts(false);
-        this.getAllAttributes(false);
-        this.getAllRelationships(false);
+        this.initAssistComponents();
+        this.readOWLOntology(Ontology);
+        this.getAllConcepts( ); //结构：id
+        this.getAllAttributes( ); //结构：（id:<id,属性名，属性值>)
+        this.getAllRelationships( ); //结构:id,<头实体、关系、尾实体>
 
-        this.readOWLString(newVersionString);
-        this.getAllConcepts(true);
-        this.getAllAttributes(true);
-        this.getAllRelationships(true);
-
-        this.computeBasicConceptChanges(oldConcepts, newConcepts, oldAttributes, newAttributes);
-        this.computeBasicRelationshipChanges(oldRelationships, newRelationships);
-        this.computeBasicAttributeChanges(oldAttributes, newAttributes);
-
-        this.integrateBasicChanges();
     }
+    public void designOntology(String scene, int version) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
+        OntologyCreateUtil ocu = new OntologyCreateUtil(this);
+        OWLOntology ont = ocu.createOntology(scene, version);
+        ocu.addATSSceneComponents(ont);
+        ocu.outputOntology(ont, scene + version);
 
-    private void initAssistComponents(){
+    }
+//    public void designOntology() throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
+//        OntologyCreateUtil ocu = new OntologyCreateUtil(this);
+//        OWLOntology ont = ocu.createOntology(scene, version);
+//        ocu.addATSSceneComponents(ont);
+//        ocu.outputOntology(ont, scene + version);
+//
+//    }
+
+    public void initAssistComponents() {
         sceneConcepts = new Vector<>();
         sceneConceptsList = new Vector<>();
         matchedConcepts = new Vector<>();
         matchedConceptsList = new Vector<>();
     }
-    public void parseOntology(OWLOntology V1,OWLOntology V2){
 
-        initAssistComponents();
-        this.readOWLOntology(V1);
-        this.getAllConcepts(false); //结构：id
-        this.getAllAttributes(false); //结构：（id:<id,属性名，属性值>)
-        this.getAllRelationships(false); //结构:id,<头实体、关系、尾实体>
-
-        initAssistComponents();
-        this.readOWLOntology(V2);
-        this.getAllConcepts(true); //结构：id
-        this.getAllAttributes(true); //结构：（id:<id,属性名，属性值>)
-        this.getAllRelationships(true); //结构:id,<头实体、关系、尾实体>
-    }
-
-    public void analysisBasicChange(){
-        this.computeBasicConceptChanges(oldConcepts, newConcepts, oldAttributes, newAttributes);
-        this.computeBasicRelationshipChanges(oldRelationships, newRelationships);
-        this.computeBasicAttributeChanges(oldAttributes, newAttributes);
-
-        this.integrateBasicChanges();
-    }
-    public void parseAndIntegrateChanges(OWLOntology oldVersion, OWLOntology newVersion) {
-        this.conceptNames = new HashMap<String, String>();
-
-        this.readOWLOntology(oldVersion); //对原本体中所有实体操作，获得其所有概念、属性、实体、关系，返回对应本体字符串
-        this.getAllConcepts(false); //结构：id
-        this.getAllAttributes(false); //结构：（id:<id,属性名，属性值>)
-        this.getAllRelationships(false); //结构:id,<头实体、关系、尾实体>
-
-//        this.setOldConcepts((HashSet<String>) this.getOldATSConcepts());
-//        this.setOldRelationships(this.getOldATSRelationships());
-//        this.setOldAttributes(this.getOldATSAttributes());
-
-        this.readOWLOntology(newVersion);
-        this.getAllConcepts(true);
-        this.getAllAttributes(true);
-        this.getAllRelationships(true);
-
-//        this.setNewConcepts((HashSet<String>) this.getNewATSConcepts());
-//        this.setNewRelationships(this.getNewATSRelationships());
-//        this.setNewAttributes(this.getNewATSAttributes());
-        
-        this.computeBasicConceptChanges(oldConcepts, newConcepts, oldAttributes, newAttributes);
-        this.computeBasicRelationshipChanges(oldRelationships, newRelationships);
-        this.computeBasicAttributeChanges(oldAttributes, newAttributes);
-
-        this.integrateBasicChanges();
-    }
-    public Set<String> getChildConceptsAndRelations(HashSet<String> concepts, Boolean newVersion){
+    public Set<String> getChildConceptsAndRelations(HashSet<String> concepts) {
         DataStructuralUtil dsu = new DataStructuralUtil();
         Set<String> childConcepts = new HashSet<>();
         Set<String> conceptClone = dsu.cloneHashSet(concepts);
 
-        if(!newVersion) {
-            for (List<String[]> relations : oldATSRelationships.values()) {
-                for (String[] relation : relations) {
+        for (List<String[]> relations : ATSRelationships.values()) {
+            for (String[] relation : relations) {
 
-                    if (conceptClone.contains(relation[2])) {
-                        if (relation[1].equals("is_a")) {
-                            childConcepts.add(relation[0]);
-                            List<String[]> rels = oldRelationships.get(relation[0]);
-                            if (rels == null) {
-                                rels = new Vector<>();
-                            }
-                            rels.add(relation);
-                            oldConcepts.add(relation[0]);
-                            oldRelationships.put(relation[0], rels);
-                            oldVersionRelationshipSize++;
+                if (conceptClone.contains(relation[2])) {
+                    if (relation[1].equals("is_a")) {
+                        childConcepts.add(relation[0]);
+                        List<String[]> rels = Relationships.get(relation[0]);
+                        if (rels == null) {
+                            rels = new Vector<>();
                         }
-                    }
-                }
-            }
-            
-        } else {
-            for (List<String[]> relations : newATSRelationships.values()) {
-                for (String[] relation : relations) {
-                    if (conceptClone.contains(relation[2])) {
-                        if (relation[1].equals("is_a")) {
-                            childConcepts.add(relation[0]);
-                            List<String[]> rels = newRelationships.get(relation[0]);
-                            if (rels == null) {
-                                rels = new Vector<>();
-                            }
-                            rels.add(relation);
-                            newConcepts.add(relation[0]);
-                            newRelationships.put(relation[0], rels);
-                            newVersionRelationshipSize++;
-                        }
+                        rels.add(relation);
+                        Concepts.add(relation[0]);
+                        Relationships.put(relation[0], rels);
+                        versionRelationshipSize++;
                     }
                 }
             }
         }
-        
 
         return childConcepts;
 
     }
-    public Set<String> getFatherConceptsAndRelations(HashSet<String> concepts, Boolean newVersion){
+
+    public Set<String> getFatherConceptsAndRelations(HashSet<String> concepts) {
         DataStructuralUtil dsu = new DataStructuralUtil();
         Set<String> fatherConcepts = new HashSet<>();
         Set<String> conceptClone = dsu.cloneHashSet(concepts);
         Iterator<String> conceptIterator = conceptClone.iterator();
-        if(!newVersion){
 
-            while (conceptIterator.hasNext()) {
-                String child = conceptIterator.next();
-                if (oldATSRelationships.get(child) != null) {
-                    //获取所有概念 一一找其父类
-                    for (String[] strings : oldATSRelationships.get(child)) {
+        while (conceptIterator.hasNext()) {
+            String child = conceptIterator.next();
+            if (ATSRelationships.get(child) != null) {
+                //获取所有概念 一一找其父类
+                for (String[] strings : ATSRelationships.get(child)) {
 
-                        if(strings[1].equals("is_a")) {
-                            String potentialFather = strings[2];
-                            oldConcepts.add(potentialFather);
-                            if (!(sceneConceptsList.contains(potentialFather) || matchedConceptsList.contains(potentialFather))) {
-                                fatherConcepts.add(potentialFather);
-                                List<String[]> rels = oldRelationships.get(child);
-                                if (rels == null) {
-                                    rels = new Vector<>();
-                                }
-                                rels.add(new String[]{child, "is_a", potentialFather});
-                                oldRelationships.put(child, rels);
-                                oldVersionRelationshipSize++;
-
+                    if (strings[1].equals("is_a")) {
+                        String potentialFather = strings[2];
+                        if (!(sceneConceptsList.contains(potentialFather) || matchedConceptsList.contains(potentialFather))) {
+                            Concepts.add(potentialFather);
+                            fatherConcepts.add(potentialFather);
+                            List<String[]> rels = Relationships.get(child);
+                            if (rels == null) {
+                                rels = new Vector<>();
                             }
-                        }
-                    }
-                }
-            }
-        } else {
-            while (conceptIterator.hasNext()) {
-                String child = conceptIterator.next();
-                if (newATSRelationships.get(child) != null) {
-                    //获取所有概念 一一找其父类
-                    for (String[] strings : newATSRelationships.get(child)) {
-
-                        if (strings[1].equals("is_a")) {
-                            String potentialFather = strings[2];
-                            newConcepts.add(potentialFather);
-                            if (!(sceneConceptsList.contains(potentialFather) || matchedConceptsList.contains(potentialFather))) {
-                                fatherConcepts.add(potentialFather);
-                                List<String[]> rels = newRelationships.get(child);
-                                if (rels == null) {
-                                    rels = new Vector<>();
-                                }
-                                rels.add(new String[]{child, "is_a", potentialFather});
-                                newRelationships.put(child, rels);
-                                newVersionRelationshipSize++;
-                            }
+                            rels.add(new String[]{child, "is_a", potentialFather});
+                            Relationships.put(child, rels);
+                            versionRelationshipSize++;
                         }
                     }
                 }
@@ -360,513 +436,136 @@ public class OWLManager {
         }
         return fatherConcepts;
     }
-    public HashSet<String> getLogicalRelevantConceptsAndRelationships(HashSet<String> concepts, Boolean newVersion){ //oldConcepts
+
+    public HashSet<String> getLogicalRelevantConceptsAndRelationships(HashSet<String> concepts) { //oldConcepts
         //要求：相关概念作为头实体和尾实体的 都需要考虑在内
         //结果：找到了相关联的概念 及其所有关系
         DataStructuralUtil du = new DataStructuralUtil();
         Set<String> cloneConcepts = du.cloneHashSet(concepts);
         HashSet<String> res = new HashSet<>();
 
-        if(!newVersion){
-            for (String concept : cloneConcepts) {
-                if (oldATSRelationships.get(concept)!=null) {
-                    for (String[] relation : oldATSRelationships.get(concept)) {
-                        if (concept.equals(relation[0])) {   //所述概念为头实体时 找相关尾实体
-                            List<String[]> rels = oldRelationships.get(concept);
-                            oldConcepts.add(relation[2]);
-                            res.add(relation[2]);
-                            if (rels == null) {
-                                rels = new Vector<>();
-                            }
-                            if (!rels.contains(relation)) {
-                                rels.add(new String[]{relation[0], relation[1], relation[2]});
-                            }
-                            oldRelationships.put(concept, rels);
+        for (String concept : cloneConcepts) {
+            if (ATSRelationships.get(concept) != null) {
+                for (String[] relation : ATSRelationships.get(concept)) {
+                    if (concept.equals(relation[0])) {   //所述概念为头实体时 找相关尾实体
+                        List<String[]> rels = Relationships.get(concept);
+                        Concepts.add(relation[2]);
+                        res.add(relation[2]);
+                        if (rels == null) {
+                            rels = new Vector<>();
                         }
-                        if (concept.equals(relation[2])) { //所述概念为尾实体时 找相关头实体
-                            List<String[]> rels = oldRelationships.get(relation[0]);
-                            oldConcepts.add(relation[0]);
-                            res.add(relation[2]);
-                            if (rels == null) {
-                                rels = new Vector<>();
-                            }
-                            if (!rels.contains(relation)) {
-                                rels.add(new String[]{relation[0], relation[1], relation[2]});
-                            }
-                            oldRelationships.put(relation[0], rels);
+                        if (!rels.contains(relation)) {
+                            rels.add(new String[]{relation[0], relation[1], relation[2]});
                         }
+                        Relationships.put(concept, rels);
                     }
-                }
-
-            }
-
-        } else {
-            for (String concept : cloneConcepts) {
-                if(newATSRelationships.get(concept)!=null) {
-                    for (String[] relation : newATSRelationships.get(concept)) {
-                        if (concept.equals(relation[0])) {   //所述概念为头实体时 找相关尾实体
-                            List<String[]> rels = newRelationships.get(concept);
-                            newConcepts.add(relation[2]);
-                            res.add(relation[2]);
-                            if (rels == null) {
-                                rels = new Vector<>();
-                            }
-                            if (!rels.contains(relation)) {
-                                rels.add(new String[]{relation[0], relation[1], relation[2]});
-                            }
-                            newRelationships.put(concept, rels);
+                    if (concept.equals(relation[2])) { //所述概念为尾实体时 找相关头实体
+                        List<String[]> rels = Relationships.get(relation[0]);
+                        Concepts.add(relation[0]);
+                        res.add(relation[2]);
+                        if (rels == null) {
+                            rels = new Vector<>();
                         }
-                        if (concept.equals(relation[2])) { //所述概念为尾实体时 找相关头实体
-                            List<String[]> rels = newRelationships.get(relation[0]);
-                            newConcepts.add(relation[0]);
-                            res.add(relation[2]);
-                            if (rels == null) {
-                                rels = new Vector<>();
-                            }
-                            if (!rels.contains(relation)) {
-                                rels.add(new String[]{relation[0], relation[1], relation[2]});
-                            }
-                            newRelationships.put(relation[0], rels);
+                        if (!rels.contains(relation)) {
+                            rels.add(new String[]{relation[0], relation[1], relation[2]});
                         }
+                        Relationships.put(relation[0], rels);
                     }
                 }
             }
+
         }
+
+
         return res;
     }
 
-    public void getComponentAttributes(Boolean newVersion){
-        if(!newVersion){
-            Iterator<String> it = oldConcepts.iterator();
-            while(it.hasNext()) {
-                String concept = it.next();
-                if (newATSAttributes.get(concept) != null) {
-                    oldAttributes.put(concept, oldATSAttributes.get(concept));
-                }
-            }
+    public void getComponentAttributes() {
 
-        }
-        else {
-            Iterator<String> it = newConcepts.iterator();
-            while(it.hasNext()) {
-                String concept = it.next();
-                if (newATSAttributes.get(concept) != null) {
-                    newAttributes.put(concept, newATSAttributes.get(concept));
-                }
+        Iterator<String> it = Concepts.iterator();
+        while (it.hasNext()) {
+            String concept = it.next();
+            if (ATSAttributes.get(concept) != null) {
+                Attributes.put(concept, ATSAttributes.get(concept));
             }
         }
 
     }
-    public void removeDuplicateRelations(Boolean newVersion) {
-        if (newVersion) {
-            for (String key : oldRelationships.keySet()) {
-                List<String[]> rels = oldRelationships.get(key);
-                HashSet<String[]> set = new HashSet(rels);
-                rels.clear();
-                rels.addAll(set);
-            }
-        } else {
-            for (String key : newRelationships.keySet()) {
-                List<String[]> rels = newRelationships.get(key);
-                HashSet<String[]> set = new HashSet(rels);
-                rels.clear();
-                rels.addAll(set);
-            }
+
+    public void removeDuplicateRelations() {
+
+        for (String key : Relationships.keySet()) {
+            List<String[]> rels = Relationships.get(key);
+            HashSet<String[]> set = new HashSet(rels);
+            rels.clear();
+            rels.addAll(set);
         }
     }
-    public void computeSceneElements(String scene,Boolean newVersion,int layer){
+
+    public void computeSceneElements(String scene, int layer) {
         //要求：直接关联场景要素的子类 父类 相关的概念及其父类 这些概念的所有关系和属性
         HashSet<String> assertedConcepts = new HashSet<>();
         int i = 0;
-        if(!newVersion) {
-            //关联场景的所有要素
-            for (String[] strings : oldSceneRelationships.get(scene)) {
-                oldConcepts.add(strings[0]);
-                //加入直接关联的场景要素
-                assertedConcepts.add(strings[0]);  //暂存 因为不需要对子类找更多的父类
+        //关联场景的所有要素
+        for (String[] strings : SceneRelationships.get(scene)) {
+            Concepts.add(strings[0]);
+            //加入直接关联的场景要素
+            assertedConcepts.add(strings[0]);  //暂存 因为不需要对子类找更多的父类
+        }
+
+        getLogicalRelevantConceptsAndRelationships(assertedConcepts);  //找到直接相关的逻辑上相关的要素
+
+        Set<String> assertedChildren = getChildConceptsAndRelations(assertedConcepts);  //找子类
+
+        while (assertedChildren.size() > 0) {   //递归寻找子类
+            getLogicalRelevantConceptsAndRelationships((HashSet<String>) assertedChildren);   //找子类逻辑上相关的要素
+            HashSet<String> assertedFather = new HashSet<>();
+            for (String res : assertedChildren) {
+                assertedConcepts.add(res);
+                assertedFather.add(res);
+            }
+            assertedChildren = getChildConceptsAndRelations(assertedFather);
+        }
+
+
+        Set<String> fathers = getFatherConceptsAndRelations(Concepts);
+        HashSet<String> logicalRelevantConcept = new HashSet<>();
+        if (layer > 0) {
+            logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers);
+        }
+
+        while (fathers.size() > 0) {
+
+            HashSet<String> children = new HashSet<>();
+            for (String res : fathers) {
+                Concepts.add(res);
+                children.add(res);
+            }
+            for (String res : logicalRelevantConcept) {
+                children.add(res);
             }
 
-            getLogicalRelevantConceptsAndRelationships(assertedConcepts, newVersion);  //找到直接相关的逻辑上相关的要素
-
-            Set<String> assertedChildren = getChildConceptsAndRelations(assertedConcepts, newVersion);  //找子类
-
-            while (assertedChildren.size() > 0) {   //递归寻找子类
-                getLogicalRelevantConceptsAndRelationships((HashSet<String>) assertedChildren, newVersion);   //找子类逻辑上相关的要素
-                HashSet<String> assertedFather = new HashSet<>();
-                for (String res : assertedChildren) {
-                    assertedConcepts.add(res);
-                    assertedFather.add(res);
-                }
-                assertedChildren = getChildConceptsAndRelations(assertedFather, newVersion);
-            }
-
-
-            Set<String> fathers = getFatherConceptsAndRelations(oldConcepts, newVersion);
-            HashSet<String> logicalRelevantConcept = new HashSet<>();
+            fathers = getFatherConceptsAndRelations(children);   //循环寻找父类
+            layer--;
             if (layer > 0) {
-                logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
+                logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers);
+            }
+            i++;    //TODO：判断退出条件
+            if (i > 10) {
+                break;
             }
 
-            while (fathers.size() > 0) {
-
-                HashSet<String> children = new HashSet<>();
-                for (String res : fathers) {
-                    oldConcepts.add(res);
-                    children.add(res);
-                }
-                for (String res : logicalRelevantConcept) {
-                    children.add(res);
-                }
-
-                fathers = getFatherConceptsAndRelations(children, newVersion);   //循环寻找父类
-                layer--;
-                if (layer > 0) {
-                    logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
-                }
-                i++;    //TODO：判断退出条件
-                if(i>10){
-                    break;
-                }
-
-            }
-        } else {
-            //关联场景的所有要素
-            for (String[] strings : newSceneRelationships.get(scene)) {
-                newConcepts.add(strings[0]);
-                //加入直接关联的场景要素
-                assertedConcepts.add(strings[0]);  //暂存 因为不需要对子类找更多的父类
-            }
-
-            getLogicalRelevantConceptsAndRelationships(assertedConcepts, newVersion);  //找到直接相关的逻辑上相关的要素
-
-            Set<String> assertedChildren = getChildConceptsAndRelations(assertedConcepts, newVersion);  //找子类
-
-            while (assertedChildren.size() > 0) {   //递归寻找子类
-                getLogicalRelevantConceptsAndRelationships((HashSet<String>) assertedChildren, newVersion);   //找子类逻辑上相关的要素
-                HashSet<String> assertedFather = new HashSet<>();
-                for (String res : assertedChildren) {
-                    assertedConcepts.add(res);
-                    assertedFather.add(res);
-                }
-                assertedChildren = getChildConceptsAndRelations(assertedFather, newVersion);
-            }
-
-
-            Set<String> fathers = getFatherConceptsAndRelations((HashSet<String>) newConcepts, newVersion);
-            HashSet<String> logicalRelevantConcept = new HashSet<>();
-            if (layer > 0) {
-                logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
-            }
-
-            while (fathers.size() > 0) {
-
-                HashSet<String> children = new HashSet<>();
-                for (String res : fathers) {
-                    newConcepts.add(res);
-                    children.add(res);
-                }
-                for (String res : logicalRelevantConcept) {
-                    children.add(res);
-                }
-
-                fathers = getFatherConceptsAndRelations(children, newVersion);   //循环寻找父类
-                layer--;
-                if (layer > 0) {
-                    logicalRelevantConcept = getLogicalRelevantConceptsAndRelationships((HashSet<String>) fathers, newVersion);
-                }
-                i++;    //TODO：判断退出条件
-                if(i>10){
-                    break;
-                }
-
-            }
         }
-        //关系去重
-        removeDuplicateRelations(newVersion);
+    //关系去重
+    removeDuplicateRelations();
 
-        //找到了所有有关概念
-        getComponentAttributes(newVersion);
+    //找到了所有有关概念
+    getComponentAttributes();
 
-
-    }
-
-
-    public void integrateBasicChanges() { //将更改保存至h2数据库
-        try {
-            DataBaseHandler.getInstance().executeDml("TRUNCATE TABLE " + Globals.WORKING_TABLE); //切换到change数据表
-
-            PreparedStatement oneValueChange = DataBaseHandler.getInstance().prepareStatement("MERGE INTO " + Globals.WORKING_TABLE + " (actionMD5,change_action,value1) KEY (actionMD5) VALUES (?,?,?)");
-            PreparedStatement twoValueChange = DataBaseHandler.getInstance().prepareStatement("MERGE INTO " + Globals.WORKING_TABLE + " (actionMD5,change_action,value1,value2) KEY (actionMD5) VALUES (?,?,?,?)");
-            PreparedStatement threeValueChange = DataBaseHandler.getInstance().prepareStatement("MERGE INTO " + Globals.WORKING_TABLE + " (actionMD5,change_action,value1,value2,value3) KEY (actionMD5) VALUES (?,?,?,?,?)");
-            PreparedStatement sixValueChange = DataBaseHandler.getInstance().prepareStatement("INSERT INTO " + Globals.WORKING_TABLE + " (actionMD5,change_action,value1,value2,value3,value4,value5,value6) VALUES (?,?,?,?,?,?,?,?)");
-
-            for (String concept : conceptAdditions) {
-                oneValueChange.setString(1, Utils.MD5(new String[]{"addC", concept}));
-                oneValueChange.setString(2, "addC");
-                oneValueChange.setString(3, concept);
-                oneValueChange.addBatch();
-            }
-            oneValueChange.executeBatch();
-
-            for (String concept : conceptDeletions) {
-                oneValueChange.setString(1, Utils.MD5(new String[]{"delC", concept}));
-                oneValueChange.setString(2, "delC");
-                oneValueChange.setString(3, concept);
-                oneValueChange.addBatch();
-            }
-            oneValueChange.executeBatch();
-
-            for (String[] concepts : conceptMaps) {
-                twoValueChange.setString(1, Utils.MD5(new String[]{"mapC", concepts[0], concepts[1]}));
-                twoValueChange.setString(2, "mapC");
-                twoValueChange.setString(3, concepts[0]);
-                twoValueChange.setString(4, concepts[1]);
-                twoValueChange.addBatch();
-            }
-            twoValueChange.executeBatch();
-
-            for (String[] relationship : relationshipAdditions) {
-                threeValueChange.setString(1, Utils.MD5(new String[]{"addR", relationship[0], relationship[1], relationship[2]}));
-                threeValueChange.setString(2, "addR");
-                threeValueChange.setString(3, relationship[0]);
-                threeValueChange.setString(4, relationship[1]);
-                threeValueChange.setString(5, relationship[2]);
-                threeValueChange.addBatch();
-            }
-            threeValueChange.executeBatch();
-
-            for (String[] relationship : relationshipDeletions) {
-                threeValueChange.setString(1, Utils.MD5(new String[]{"delR", relationship[0], relationship[1], relationship[2]}));
-                threeValueChange.setString(2, "delR");
-                threeValueChange.setString(3, relationship[0]);
-                threeValueChange.setString(4, relationship[1]);
-                threeValueChange.setString(5, relationship[2]);
-                threeValueChange.addBatch();
-            }
-            threeValueChange.executeBatch();
-
-            for (String[] relationship : relationshipMaps) {
-                sixValueChange.setString(1, Utils.MD5(new String[]{"mapR", relationship[0], relationship[1], relationship[2], relationship[3], relationship[4], relationship[5]}));
-                sixValueChange.setString(2, "mapR");
-                sixValueChange.setString(3, relationship[0]);
-                sixValueChange.setString(4, relationship[1]);
-                sixValueChange.setString(5, relationship[2]);
-                sixValueChange.setString(6, relationship[3]);
-                sixValueChange.setString(7, relationship[4]);
-                sixValueChange.setString(8, relationship[5]);
-                sixValueChange.addBatch();
-            }
-            sixValueChange.executeBatch();
-
-            for (String[] attribute : attributeAdditions) {
-                threeValueChange.setString(1, Utils.MD5(new String[]{"addA", attribute[0], attribute[1], attribute[2]}));
-                threeValueChange.setString(2, "addA");
-                threeValueChange.setString(3, attribute[0]);
-                threeValueChange.setString(4, attribute[1]);
-                threeValueChange.setString(5, attribute[2]);
-                threeValueChange.addBatch();
-            }
-            threeValueChange.executeBatch();
-
-            for (String[] attribute : attributeDeletions) {
-                threeValueChange.setString(1, Utils.MD5(new String[]{"delA", attribute[0], attribute[1], attribute[2]}));
-                threeValueChange.setString(2, "delA");
-                threeValueChange.setString(3, attribute[0]);
-                threeValueChange.setString(4, attribute[1]);
-                threeValueChange.setString(5, attribute[2]);
-                threeValueChange.addBatch();
-            }
-            threeValueChange.executeBatch();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void computeBasicConceptChanges(Set<String> oldConcepts, Set<String> newConcepts, Map<String,
-            List<String[]>> oldAttributes, Map<String, List<String[]>> newAttributes) {
-        conceptMaps = new Vector<String[]>();
-        conceptAdditions = new Vector<String>();
-        conceptDeletions = new Vector<String>();
-        HashSet<String> directMatchDomain = new HashSet<String>(); //直接匹配的头节点
-        HashSet<String> directMatchRange = new HashSet<String>();
-
-        //Synonym-Match (b-COG rule b3)  找单映射
-        for (String conceptAcc : newAttributes.keySet()) {
-            for (String[] newAttribute : newAttributes.get(conceptAcc)) {
-                if (newAttribute[1].contains("ats:Evo")) {
-                    if (oldConcepts.contains(newAttribute[2])) {
-                        conceptMaps.add(new String[]{newAttribute[2], newAttribute[0]});
-                        directMatchDomain.add(newAttribute[2]);
-                        directMatchRange.add(newAttribute[0]);
-                    }
-                }
-            }
-        }
-        for (String conceptAcc : oldAttributes.keySet()) {
-            for (String[] oldAttribute : oldAttributes.get(conceptAcc)) {
-                if (oldAttribute[1].contains("ats:Evo")) {
-                    if (newConcepts.contains(oldAttribute[2])) {
-                        conceptMaps.add(new String[]{oldAttribute[2], oldAttribute[0]});
-                        directMatchDomain.add(oldAttribute[2]);
-                        directMatchRange.add(oldAttribute[0]);
-                    }
-                }
-            }
-        }
-
-        //Direct-Match accession (b-COG rule b4,b5) 在单映射的基础上找多映射（一个实体的意义在不同代际间仍有原意map（a,a）） //如a的意义发生变化，则应采用新的实体（id）表示
-        List<String[]> tmpConceptMaps = new Vector<String[]>();
-        for (String[] map : conceptMaps) {
-            if (oldConcepts.contains(map[0]) && newConcepts.contains(map[0])) {
-                tmpConceptMaps.add(new String[]{map[0], map[0]});
-            }
-            if (oldConcepts.contains(map[1]) && newConcepts.contains(map[1])) {
-                tmpConceptMaps.add(new String[]{map[1], map[1]});
-            }
-        }
-        conceptMaps.addAll(tmpConceptMaps);
-
-        for (String oldConcept : oldConcepts) {
-            if (newConcepts.contains(oldConcept)) {
-                //conceptMaps.add(new String[]{oldConcept,oldConcept});
-                directMatchDomain.add(oldConcept);
-                directMatchRange.add(oldConcept);
-            }
-        }
+}
 
 
-        //Concept additions (b-COG rule b1) 映射到的概念在原表中可能不存在，添加操作
-        for (String newConcept : newConcepts) {
-            if (!directMatchRange.contains(newConcept)) {
-                conceptAdditions.add(newConcept);
-            }
-        }
 
-        //Concept deletions (b-COG rule b2)
-        for (String oldConcept : oldConcepts) {
-            if (!directMatchDomain.contains(oldConcept)) {
-                conceptDeletions.add(oldConcept);
-            }
-        }
-
-        //Split Handling
-        if (useSplitInference) {
-            this.handleSplitMappings();
-        }
-
-        System.out.println("#ConceptMaps: " + conceptMaps.size());
-        System.out.println("#ConceptAdditions: " + conceptAdditions.size());
-        System.out.println("#CocneptDeletions: " + conceptDeletions.size());
-    }
-
-    public void computeBasicRelationshipChanges(Map<String, List<String[]>> oldRelationships, Map<String, List<String[]>> newRelationships) {
-        relationshipMaps = new Vector<String[]>();
-        relationshipDeletions = new Vector<String[]>();
-        relationshipAdditions = new Vector<String[]>();
-
-        for (String conceptAcc : oldRelationships.keySet()) {
-            List<String[]> tmpOldRelationships = oldRelationships.get(conceptAcc);
-            if (newRelationships.containsKey(conceptAcc)) {
-                List<String[]> tmpNewRelationships = newRelationships.get(conceptAcc);
-                for (String[] tmpOldRel : tmpOldRelationships) {
-                    boolean found = false;
-                    for (String[] tmpNewRel : tmpNewRelationships) {
-                        if (tmpOldRel[2].equals(tmpNewRel[2])) {//头尾实体相同的关系：b8.关系不同，采用映射 b7.尾实体没有相同的，删除关系/对于old图中a概念的所有关系，new图中没有a对应的任何关系
-                            if (!tmpOldRel[1].equals(tmpNewRel[1])) {
-                                relationshipMaps.add(new String[]{tmpOldRel[0], tmpOldRel[1], tmpOldRel[2], tmpNewRel[0], tmpNewRel[1], tmpNewRel[2]});
-                            }
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found) {
-                        relationshipDeletions.add(new String[]{tmpOldRel[0], tmpOldRel[1], tmpOldRel[2]});
-                    }
-                }
-            } else {
-                relationshipDeletions.addAll(tmpOldRelationships);
-            }
-        }
-
-        for (String conceptAcc : newRelationships.keySet()) {
-            List<String[]> tmpNewRelationships = newRelationships.get(conceptAcc);
-            if (oldRelationships.containsKey(conceptAcc)) {
-                List<String[]> tmpOldRelationships = oldRelationships.get(conceptAcc);
-                for (String[] tmpNewRel : tmpNewRelationships) {
-                    boolean found = false;
-                    for (String[] tmpOldRel : tmpOldRelationships) {
-                        if (tmpNewRel[2].equals(tmpOldRel[2])) {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found) { //b6.添加new图新出现的关系或新出现实体的所有新关系
-                        relationshipAdditions.add(new String[]{tmpNewRel[0], tmpNewRel[1], tmpNewRel[2]});
-                    }
-                }
-            } else {
-                relationshipAdditions.addAll(tmpNewRelationships);
-            }
-        }
-
-        System.out.println("#RelMaps: " + relationshipMaps.size());
-        System.out.println("#RelAdditions: " + relationshipAdditions.size());
-        System.out.println("#RelDeletions: " + relationshipDeletions.size());
-    }
-
-    public void computeBasicAttributeChanges(Map<String, List<String[]>> oldAttributes,
-                                             Map<String, List<String[]>> newAttributes) {
-        attributeMaps = new Vector<String[]>();
-        attributeDeletions = new Vector<String[]>();
-        attributeAdditions = new Vector<String[]>();
-
-        for (String conceptAcc : oldAttributes.keySet()) {
-            List<String[]> tmpOldAttributes = oldAttributes.get(conceptAcc);
-            if (newAttributes.containsKey(conceptAcc)) {
-                List<String[]> tmpNewAttributes = newAttributes.get(conceptAcc);
-                for (String[] tmpOldAtt : tmpOldAttributes) {
-                    boolean found = false;
-                    for (String[] tmpNewAtt : tmpNewAttributes) {
-                        if (tmpOldAtt[1].equals(tmpNewAtt[1]) && tmpOldAtt[2].equals(tmpNewAtt[2])) {
-                            //relationshipMaps.add(new String[]{tmpOldRel[0],tmpOldRel[1],tmpOldRel[2],tmpNewRel[0],tmpNewRel[1],tmpNewRel[2]});
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found) {
-                        attributeDeletions.add(new String[]{tmpOldAtt[0], tmpOldAtt[1], tmpOldAtt[2]});
-                    }
-                }
-            } else {
-                attributeDeletions.addAll(tmpOldAttributes);
-            }
-        }
-
-        for (String conceptAcc : newAttributes.keySet()) {
-            List<String[]> tmpNewAttributes = newAttributes.get(conceptAcc);
-            if (oldAttributes.containsKey(conceptAcc)) {
-                List<String[]> tmpOldAttributes = oldAttributes.get(conceptAcc);
-                for (String[] tmpNewAtt : tmpNewAttributes) {
-                    boolean found = false;
-                    for (String[] tmpOldAtt : tmpOldAttributes) {
-                        if (tmpNewAtt[1].equals(tmpOldAtt[1]) && tmpNewAtt[2].equals(tmpOldAtt[2])) {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found) {
-                        attributeAdditions.add(new String[]{tmpNewAtt[0], tmpNewAtt[1], tmpNewAtt[2]});
-                    }
-                }
-            } else {
-                attributeAdditions.addAll(tmpNewAttributes);
-            }
-        }
-
-        System.out.println("#AttMaps: " + attributeMaps.size());
-        System.out.println("#AttAdditions: " + attributeAdditions.size());
-        System.out.println("#AttDeletions: " + attributeDeletions.size());
-    }
 
     public void readOWLString(String content) {
         try {
@@ -1109,7 +808,7 @@ public class OWLManager {
                     for (OWLObjectProperty oop : op.getObjectPropertiesInSignature()) {
                         relName = oop.getIRI().toString();
                         relValue = oop.getNamedProperty().getIRI().getFragment();
-                        System.out.println(relValue);
+
                         if (relValue != null && relName != null) {
                             Set<OWLClass> set = op.getSuperClass().getClassesInSignature();
                             Iterator it = set.iterator();
@@ -1155,10 +854,10 @@ public class OWLManager {
             //System.out.println(objRel.getToAccessionNumber()+" "+objRel.getType()+" "+objRel.getFromAccessionNumber());
             relationshipsImport.add(new String[]{objRel.getToAccessionNumber(), objRel.getFromAccessionNumber(), objRel.getType()}); //结构：起始，终点，关系
         }
-        for(int i = 0 ; i<matchedConcepts.size();i++){
+        for (int i = 0; i < matchedConcepts.size(); i++) {
             matchedConceptsList.add(matchedConcepts.get(i)[0]);
         }
-        for(int i = 0 ; i<sceneConcepts.size();i++){
+        for (int i = 0; i < sceneConcepts.size(); i++) {
             sceneConceptsList.add(sceneConcepts.get(i)[0]);
         }
     }
@@ -1197,276 +896,108 @@ public class OWLManager {
         }
     }
 
-    public void getAllConcepts(boolean newVersion) {
+    public void getAllConcepts() {
+       SceneConcepts.add("Thing");
 
-        if (!newVersion) {
-            for (String[] object : this.objectsImport) {
-                if (sceneConceptsList.contains(object[0])) {
-                    oldSceneConcepts.add(object[0]);    //代表场景分类的实体
-                    oldVersionSceneConceptSize++;
-                    continue;
-                }
-                if (matchedConceptsList.contains(object[0])) {
-                    oldMatchedConcepts.add(object[0]);  //代表存在映射的实体
-                    oldVersionMatchedConceptSize++;
-                    continue;
-                }
-                if(!(object.equals(Globals.SCENE_CONCEPT)||object.equals(Globals.MATCHED_CONCEPT)||object.equals("Thing")))
-                {
-                    oldATSConcepts.add(object[0]);
-                    oldVersionATSConceptSize++;
-                }
+        for (String[] object : this.objectsImport) {
+            if (sceneConceptsList.contains(object[0])) {
+                SceneConcepts.add(object[0]);    //代表场景分类的实体
+                versionSceneConceptSize++;
+                continue;
             }
 
-        } else {
-            for (String[] object : this.objectsImport) {
-                if (sceneConceptsList.contains(object[0])) {
-                    newSceneConcepts.add(object[0]);
-                    newVersionSceneConceptSize++;
-                    continue;
-                }
-                if (matchedConceptsList.contains(object[0])) {
-                    newMatchedConcepts.add(object[0]);
-                    newVersionMatchedConceptSize++;
-                    continue;
-                }
-                if(!(object.equals(Globals.SCENE_CONCEPT)||object.equals(Globals.MATCHED_CONCEPT)||object.equals("Thing"))) {
-                    newATSConcepts.add(object[0]);
-                    newVersionATSConceptSize++;
-                }
+            if (!(object.equals(Globals.SCENE_CONCEPT) || object.equals(Globals.MATCHED_CONCEPT) || object.equals("Thing"))) {
+                ATSConcepts.add(object[0]);
+                versionATSConceptSize++;
             }
-
         }
     }
 
-    public void getAllRelationships(boolean newVersion) {
+    public void getAllRelationships() {
         HashMap<String, List<String[]>> allRelations = new HashMap<String, List<String[]>>(); //本体中所有定义的关系
 
-        if (!newVersion) {
-            for (String[] relationship : this.relationshipsImport) {
-                String source = relationship[0];
-                List<String[]> currentRels = allRelations.get(source);
-                if (currentRels == null) {
-                    currentRels = new Vector<String[]>();
-                }
+        for (String[] relationship : this.relationshipsImport) {
+            String source = relationship[0];
+            String target = relationship[1];
+            List<String[]> currentRels = allRelations.get(source);
+            if (currentRels == null) {
+                currentRels = new Vector<String[]>();
+            }
+            if (relationship[2].equalsIgnoreCase("is_a")) {
+
 
                 if (sceneConceptsList.contains(source)) {
                     currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                    oldStructuralSceneRelationships.put(source, currentRels);
+                    StructuralSceneRelationships.put(source, currentRels);
                     allRelations.put(source, currentRels);
                     continue;
                 }
                 if (matchedConceptsList.contains(source)) {
                     currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                    oldStructuralMatchedRelationships.put(source, currentRels);
+                    StructuralMatchedRelationships.put(source, currentRels);
                     allRelations.put(source, currentRels);
                     continue;
                 }
-                currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                oldATSRelationships.put(source, currentRels);
-                oldVersionATSRelationshipSize++;
-                allRelations.put(source, currentRels);
+                if (SceneConcepts.contains(relationship[1]) || matchedConcepts.contains(relationship[1])) {
 
-                if (!relationship[2].equalsIgnoreCase("is_a")) {
-                    continue;
-                }
-                if(oldSceneConcepts.contains(relationship[1])||oldMatchedConcepts.contains(relationship[1])) {
-                    String target = relationship[1];
                     List<String[]> rels = allRelations.get(target);
                     if (rels == null) {
                         rels = new Vector<String[]>();
                     }
                     if (sceneConceptsList.contains(target)) {
                         rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                        oldSceneRelationships.put(target, rels);
+                        SceneRelationships.put(target, rels);
                         allRelations.put(target, rels);
+                        continue;
                     }
 
                     if (matchedConceptsList.contains(target)) {
                         rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                        oldMatchedRelationships.put(target, rels);
+                        MatchedRelationships.put(target, rels);
                         allRelations.put(target, rels);
+                        continue;
                     }
                 }
-
-                }
             }
-        else {
-            for (String[] relationship : this.relationshipsImport) {
-                String source = relationship[0];
-                List<String[]> currentRels = allRelations.get(source);
-                if (currentRels == null) {
-                    currentRels = new Vector<String[]>();
-                }
+            currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
+            ATSRelationships.put(source, currentRels);
+            versionATSRelationshipSize++;
+            allRelations.put(source, currentRels);
 
-                if (sceneConceptsList.contains(source)) {
-                    currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                    newStructuralSceneRelationships.put(source, currentRels);
-                    allRelations.put(source, currentRels);
-                    continue;
-                }
-                if (matchedConceptsList.contains(source)) {
-                    currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                    newStructuralMatchedRelationships.put(source, currentRels);
-                    allRelations.put(source, currentRels);
-                    continue;
-                }
-                currentRels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                newATSRelationships.put(source, currentRels);
-                newVersionATSRelationshipSize++;
-                allRelations.put(source, currentRels);
 
-                if (!relationship[2].equalsIgnoreCase("is_a")) {
-                    continue;
-                }
-                if(newSceneConcepts.contains(relationship[1])||newMatchedConcepts.contains(relationship[1])) {
-                    String target = relationship[1];
-                    List<String[]> rels = allRelations.get(target);
-                    if (rels == null) {
-                        rels = new Vector<String[]>();
-                    }
-                    if (sceneConceptsList.contains(target)) {
-                        rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                        newSceneRelationships.put(target, rels);
-                        allRelations.put(target, rels);
-                    }
 
-                    if (matchedConceptsList.contains(target)) {
-                        rels.add(new String[]{relationship[0], relationship[2], relationship[1]});
-                        newMatchedRelationships.put(target, rels);
-                        allRelations.put(target, rels);
-                    }
-                }
 
-            }
-        }
-        }
-
-    public void getAllAttributes(boolean newVersion) {
-        HashMap<String, List<String[]>> result = new HashMap<String, List<String[]>>();
-        if (!newVersion) {
-            for (String[] attribute : this.attributesImport) {
-                String source = attribute[0];
-                List<String[]> currentRels = result.get(source);
-                if (currentRels == null) {
-                    currentRels = new Vector<String[]>();
-                }
-                if (sceneConceptsList.contains(source)) {
-                    currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
-                    oldStructuralSceneAttributes.put(source, currentRels);
-                    
-                    result.put(source, currentRels);
-                    continue;
-                }
-                if (matchedConceptsList.contains(source)) {
-                    currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
-                    oldStructuralMatchedAttributes.put(source, currentRels);
-                    
-                    result.put(source, currentRels);
-                    continue;
-                }
-                currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
-                oldATSAttributes.put(source, currentRels);
-                oldVersionATSAttributeSize++;
-                result.put(source, currentRels);
-            }
-        } else {
-            for (String[] attribute : this.attributesImport) {
-                String source = attribute[0];
-                List<String[]> currentRels = result.get(source);
-                if (currentRels == null) {
-                    currentRels = new Vector<String[]>();
-                }
-                if (sceneConceptsList.contains(source)) {
-                    currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
-                    newStructuralSceneAttributes.put(source, currentRels);
-                    
-                    result.put(source, currentRels);
-                    continue;
-                }
-                if (matchedConceptsList.contains(source)) {
-                    currentRels.add(new String[]{attribute[0], attribute[0], attribute[3]});
-                    newStructuralMatchedAttributes.put(source, currentRels);
-                    
-                    result.put(source, currentRels);
-                    continue;
-                }
-                currentRels.add(new String[]{attribute[0], attribute[0], attribute[3]});
-                newATSAttributes.put(source, currentRels);
-                newVersionATSAttributeSize++;
-                result.put(source, currentRels);
-            }
         }
     }
 
-    private void handleSplitMappings() {
+    public void getAllAttributes() {
+        HashMap<String, List<String[]>> result = new HashMap<String, List<String[]>>();
 
-        Map<String, List<String>> oldVersionChildren = new HashMap<String, List<String>>();
-
-        for (String conceptAcc : oldRelationships.keySet()) { //找子父类关系
-            for (String[] rel : oldRelationships.get(conceptAcc)) {
-                if (rel[1].equalsIgnoreCase("is_a") || rel[1].equalsIgnoreCase("part_of")) {
-                    String child = rel[0];
-                    String parent = rel[2];
-                    List<String> children = oldVersionChildren.get(parent);
-                    if (children == null) {
-                        children = new Vector<String>();
-                    }
-
-                    children.add(child);
-                    oldVersionChildren.put(parent, children);
-                }
+        for (String[] attribute : this.attributesImport) {
+            String source = attribute[0];
+            List<String[]> currentRels = result.get(source);
+            if (currentRels == null) {
+                currentRels = new Vector<String[]>();
             }
-        }
+            if (sceneConceptsList.contains(source)) {
+                currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
+                StructuralSceneAttributes.put(source, currentRels);
 
-        Map<String, List<String>> newVersionChildren = new HashMap<String, List<String>>();
-
-        for (String conceptAcc : newRelationships.keySet()) {
-            for (String[] rel : newRelationships.get(conceptAcc)) {
-                if (rel[1].equalsIgnoreCase("is_a") || rel[1].equalsIgnoreCase("part_of")) {
-                    String child = rel[0];
-                    String parent = rel[2];
-                    List<String> children = newVersionChildren.get(parent);
-                    if (children == null) {
-                        children = new Vector<String>();
-                    }
-                    children.add(child);
-                    newVersionChildren.put(parent, children);
-                }
+                result.put(source, currentRels);
+                continue;
             }
-        }
+            if (matchedConceptsList.contains(source)) {
+                currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
+                StructuralMatchedAttributes.put(source, currentRels);
 
-        for (String accession : oldConcepts) {
-
-            if (newConcepts.contains(accession)
-                    && !oldVersionChildren.containsKey(accession)
-                    && newVersionChildren.containsKey(accession)) {
-                List<String> newChildren = newVersionChildren.get(accession);
-                //Split nur wenn mehr als zwei Kinder involviert !!
-                if (newChildren.size() > 1) {
-                    boolean allNewAndLeaf = true;
-                    for (String newChild : newChildren) {
-                        //Muss eine Addition sein !!
-                        if (!conceptAdditions.contains(newChild)) {
-                            allNewAndLeaf = false;
-                        }
-                        //Muss wirklich ein Leaf sein !!
-                        if (newVersionChildren.containsKey(newChild)) {
-                            allNewAndLeaf = false;
-                        }
-                    }
-                    if (allNewAndLeaf) {
-
-                        for (String newChild : newChildren) {
-                            conceptMaps.add(new String[]{accession, newChild});
-                            conceptAdditions.remove(newChild);
-                        }
-                        conceptMaps.add(new String[]{accession, accession});
-                    }
-                }
+                result.put(source, currentRels);
+                continue;
             }
+            currentRels.add(new String[]{attribute[0], attribute[1], attribute[3]});
+            ATSAttributes.put(source, currentRels);
+            versionATSAttributeSize++;
+            result.put(source, currentRels);
         }
-
     }
 
     public String getOBOContentFromFile(String location) {
@@ -1551,540 +1082,5 @@ public class OWLManager {
     public void setRelationsName(List<String> relationsName) {
         this.relationsName = relationsName;
     }
-
-    public List<String[]> getConceptMaps() {
-        return conceptMaps;
-    }
-
-    public void setConceptMaps(List<String[]> conceptMaps) {
-        this.conceptMaps = conceptMaps;
-    }
-
-    public List<String> getConceptAdditions() {
-        return conceptAdditions;
-    }
-
-    public void setConceptAdditions(List<String> conceptAdditions) {
-        this.conceptAdditions = conceptAdditions;
-    }
-
-    public List<String> getConceptDeletions() {
-        return conceptDeletions;
-    }
-
-    public void setConceptDeletions(List<String> conceptDeletions) {
-        this.conceptDeletions = conceptDeletions;
-    }
-
-    public List<String[]> getRelationshipMaps() {
-        return relationshipMaps;
-    }
-
-    public void setRelationshipMaps(List<String[]> relationshipMaps) {
-        this.relationshipMaps = relationshipMaps;
-    }
-
-    public List<String[]> getRelationshipAdditions() {
-        return relationshipAdditions;
-    }
-
-    public void setRelationshipAdditions(List<String[]> relationshipAdditions) {
-        this.relationshipAdditions = relationshipAdditions;
-    }
-
-    public List<String[]> getRelationshipDeletions() {
-        return relationshipDeletions;
-    }
-
-    public void setRelationshipDeletions(List<String[]> relationshipDeletions) {
-        this.relationshipDeletions = relationshipDeletions;
-    }
-
-    public List<String[]> getAttributeMaps() {
-        return attributeMaps;
-    }
-
-    public void setAttributeMaps(List<String[]> attributeMaps) {
-        this.attributeMaps = attributeMaps;
-    }
-
-    public List<String[]> getAttributeAdditions() {
-        return attributeAdditions;
-    }
-
-    public void setAttributeAdditions(List<String[]> attributeAdditions) {
-        this.attributeAdditions = attributeAdditions;
-    }
-
-    public List<String[]> getAttributeDeletions() {
-        return attributeDeletions;
-    }
-
-    public void setAttributeDeletions(List<String[]> attributeDeletions) {
-        this.attributeDeletions = attributeDeletions;
-    }
-
-    public Set<String> getOldConcepts() {
-        return oldConcepts;
-    }
-
-    public void setOldConcepts(HashSet<String> oldConcepts) {
-        this.oldConcepts = oldConcepts;
-    }
-
-    public Map<String, List<String[]>> getOldAttributes() {
-        return oldAttributes;
-    }
-
-    public void setOldAttributes(Map<String, List<String[]>> oldAttributes) {
-        this.oldAttributes = oldAttributes;
-    }
-
-    public Map<String, List<String[]>> getOldRelationships() {
-        return oldRelationships;
-    }
-
-    public void setOldRelationships(Map<String, List<String[]>> oldRelationships) {
-        this.oldRelationships = oldRelationships;
-    }
-
-    public Set<String> getOldATSConcepts() {
-        return oldATSConcepts;
-    }
-
-    public void setOldATSConcepts(Set<String> oldATSConcepts) {
-        this.oldATSConcepts = oldATSConcepts;
-    }
-
-    public Map<String, List<String[]>> getOldATSAttributes() {
-        return oldATSAttributes;
-    }
-
-    public void setOldATSAttributes(Map<String, List<String[]>> oldATSAttributes) {
-        this.oldATSAttributes = oldATSAttributes;
-    }
-
-    public Map<String, List<String[]>> getOldATSRelationships() {
-        return oldATSRelationships;
-    }
-
-    public void setOldATSRelationships(Map<String, List<String[]>> oldATSRelationships) {
-        this.oldATSRelationships = oldATSRelationships;
-    }
-
-    public Set<String> getOldSceneConcepts() {
-        return oldSceneConcepts;
-    }
-
-    public void setOldSceneConcepts(Set<String> oldSceneConcepts) {
-        this.oldSceneConcepts = oldSceneConcepts;
-    }
-
-    public Map<String, List<String[]>> getOldStructuralSceneAttributes() {
-        return oldStructuralSceneAttributes;
-    }
-
-    public void setOldStructuralSceneAttributes(Map<String, List<String[]>> oldStructuralSceneAttributes) {
-        this.oldStructuralSceneAttributes = oldStructuralSceneAttributes;
-    }
-
-    public Map<String, List<String[]>> getOldStructuralSceneRelationships() {
-        return oldStructuralSceneRelationships;
-    }
-
-    public void setOldStructuralSceneRelationships(Map<String, List<String[]>> oldStructuralSceneRelationships) {
-        this.oldStructuralSceneRelationships = oldStructuralSceneRelationships;
-    }
-
-    public Set<String> getOldMatchedConcepts() {
-        return oldMatchedConcepts;
-    }
-
-    public void setOldMatchedConcepts(Set<String> oldMatchedConcepts) {
-        this.oldMatchedConcepts = oldMatchedConcepts;
-    }
-
-    public Map<String, List<String[]>> getOldStructuralMatchedAttributes() {
-        return oldStructuralMatchedAttributes;
-    }
-
-    public void setOldStructuralMatchedAttributes(Map<String, List<String[]>> oldStructuralMatchedAttributes) {
-        this.oldStructuralMatchedAttributes = oldStructuralMatchedAttributes;
-    }
-
-    public Map<String, List<String[]>> getOldStructuralMatchedRelationships() {
-        return oldStructuralMatchedRelationships;
-    }
-
-    public void setOldStructuralMatchedRelationships(Map<String, List<String[]>> oldStructuralMatchedRelationships) {
-        this.oldStructuralMatchedRelationships = oldStructuralMatchedRelationships;
-    }
-
-    public Set<String> getNewConcepts() {
-        return newConcepts;
-    }
-
-    public void setNewConcepts(Set<String> newConcepts) {
-        this.newConcepts = newConcepts;
-    }
-
-    public Map<String, List<String[]>> getNewAttributes() {
-        return newAttributes;
-    }
-
-    public void setNewAttributes(Map<String, List<String[]>> newAttributes) {
-        this.newAttributes = newAttributes;
-    }
-
-    public Map<String, List<String[]>> getNewRelationships() {
-        return newRelationships;
-    }
-
-    public void setNewRelationships(Map<String, List<String[]>> newRelationships) {
-        this.newRelationships = newRelationships;
-    }
-
-    public Set<String> getNewATSConcepts() {
-        return newATSConcepts;
-    }
-
-    public void setNewATSConcepts(Set<String> newATSConcepts) {
-        this.newATSConcepts = newATSConcepts;
-    }
-
-    public Map<String, List<String[]>> getNewATSAttributes() {
-        return newATSAttributes;
-    }
-
-    public void setNewATSAttributes(Map<String, List<String[]>> newATSAttributes) {
-        this.newATSAttributes = newATSAttributes;
-    }
-
-    public Map<String, List<String[]>> getNewATSRelationships() {
-        return newATSRelationships;
-    }
-
-    public void setNewATSRelationships(Map<String, List<String[]>> newATSRelationships) {
-        this.newATSRelationships = newATSRelationships;
-    }
-
-    public Set<String> getNewSceneConcepts() {
-        return newSceneConcepts;
-    }
-
-    public void setNewSceneConcepts(Set<String> newSceneConcepts) {
-        this.newSceneConcepts = newSceneConcepts;
-    }
-
-    public Map<String, List<String[]>> getNewStructuralSceneAttributes() {
-        return newStructuralSceneAttributes;
-    }
-
-    public void setNewStructuralSceneAttributes(Map<String, List<String[]>> newStructuralSceneAttributes) {
-        this.newStructuralSceneAttributes = newStructuralSceneAttributes;
-    }
-
-    public Map<String, List<String[]>> getNewStructuralSceneRelationships() {
-        return newStructuralSceneRelationships;
-    }
-
-    public void setNewStructuralSceneRelationships(Map<String, List<String[]>> newStructuralSceneRelationships) {
-        this.newStructuralSceneRelationships = newStructuralSceneRelationships;
-    }
-
-    public Set<String> getNewMatchedConcepts() {
-        return newMatchedConcepts;
-    }
-
-    public void setNewMatchedConcepts(Set<String> newMatchedConcepts) {
-        this.newMatchedConcepts = newMatchedConcepts;
-    }
-
-    public Map<String, List<String[]>> getNewStructuralMatchedAttributes() {
-        return newStructuralMatchedAttributes;
-    }
-
-    public void setNewStructuralMatchedAttributes(Map<String, List<String[]>> newStructuralMatchedAttributes) {
-        this.newStructuralMatchedAttributes = newStructuralMatchedAttributes;
-    }
-
-    public Map<String, List<String[]>> getNewStructuralMatchedRelationships() {
-        return newStructuralMatchedRelationships;
-    }
-
-    public void setNewStructuralMatchedRelationships(Map<String, List<String[]>> newStructuralMatchedRelationships) {
-        this.newStructuralMatchedRelationships = newStructuralMatchedRelationships;
-    }
-
-    public Map<String, String> getConceptNames() {
-        return conceptNames;
-    }
-
-    public void setConceptNames(Map<String, String> conceptNames) {
-        this.conceptNames = conceptNames;
-    }
-
-    public boolean isUseSplitInference() {
-        return useSplitInference;
-    }
-
-    public void setUseSplitInference(boolean useSplitInference) {
-        this.useSplitInference = useSplitInference;
-    }
-
-    public int getOldVersionConceptSize() {
-        return oldVersionConceptSize;
-    }
-
-    public void setOldVersionConceptSize(int oldVersionConceptSize) {
-        this.oldVersionConceptSize = oldVersionConceptSize;
-    }
-
-    public int getOldVersionRelationshipSize() {
-        return oldVersionRelationshipSize;
-    }
-
-    public void setOldVersionRelationshipSize(int oldVersionRelationshipSize) {
-        this.oldVersionRelationshipSize = oldVersionRelationshipSize;
-    }
-
-    public int getOldVersionAttributeSize() {
-        return oldVersionAttributeSize;
-    }
-
-    public void setOldVersionAttributeSize(int oldVersionAttributeSize) {
-        this.oldVersionAttributeSize = oldVersionAttributeSize;
-    }
-
-    public int getOldVersionATSConceptSize() {
-        return oldVersionATSConceptSize;
-    }
-
-    public void setOldVersionATSConceptSize(int oldVersionATSConceptSize) {
-        this.oldVersionATSConceptSize = oldVersionATSConceptSize;
-    }
-
-    public int getOldVersionATSRelationshipSize() {
-        return oldVersionATSRelationshipSize;
-    }
-
-    public void setOldVersionATSRelationshipSize(int oldVersionATSRelationshipSize) {
-        this.oldVersionATSRelationshipSize = oldVersionATSRelationshipSize;
-    }
-
-    public int getOldVersionATSAttributeSize() {
-        return oldVersionATSAttributeSize;
-    }
-
-    public void setOldVersionATSAttributeSize(int oldVersionATSAttributeSize) {
-        this.oldVersionATSAttributeSize = oldVersionATSAttributeSize;
-    }
-
-    public int getOldVersionMatchedConceptSize() {
-        return oldVersionMatchedConceptSize;
-    }
-
-    public void setOldVersionMatchedConceptSize(int oldVersionMatchedConceptSize) {
-        this.oldVersionMatchedConceptSize = oldVersionMatchedConceptSize;
-    }
-
-    public int getOldVersionMatchedRelationshipSize() {
-        return oldVersionMatchedRelationshipSize;
-    }
-
-    public void setOldVersionMatchedRelationshipSize(int oldVersionMatchedRelationshipSize) {
-        this.oldVersionMatchedRelationshipSize = oldVersionMatchedRelationshipSize;
-    }
-
-    public int getOldVersionMatchedAttributeSize() {
-        return oldVersionMatchedAttributeSize;
-    }
-
-    public void setOldVersionMatchedAttributeSize(int oldVersionMatchedAttributeSize) {
-        this.oldVersionMatchedAttributeSize = oldVersionMatchedAttributeSize;
-    }
-
-    public int getOldVersionSceneConceptSize() {
-        return oldVersionSceneConceptSize;
-    }
-
-    public void setOldVersionSceneConceptSize(int oldVersionSceneConceptSize) {
-        this.oldVersionSceneConceptSize = oldVersionSceneConceptSize;
-    }
-
-    public int getOldVersionSceneRelationshipSize() {
-        return oldVersionSceneRelationshipSize;
-    }
-
-    public void setOldVersionSceneRelationshipSize(int oldVersionSceneRelationshipSize) {
-        this.oldVersionSceneRelationshipSize = oldVersionSceneRelationshipSize;
-    }
-
-    public int getOldVersionSceneAttributeSize() {
-        return oldVersionSceneAttributeSize;
-    }
-
-    public void setOldVersionSceneAttributeSize(int oldVersionSceneAttributeSize) {
-        this.oldVersionSceneAttributeSize = oldVersionSceneAttributeSize;
-    }
-
-    public int getNewVersionConceptSize() {
-        return newVersionConceptSize;
-    }
-
-    public void setNewVersionConceptSize(int newVersionConceptSize) {
-        this.newVersionConceptSize = newVersionConceptSize;
-    }
-
-    public int getNewVersionRelationshipSize() {
-        return newVersionRelationshipSize;
-    }
-
-    public void setNewVersionRelationshipSize(int newVersionRelationshipSize) {
-        this.newVersionRelationshipSize = newVersionRelationshipSize;
-    }
-
-    public int getNewVersionAttributeSize() {
-        return newVersionAttributeSize;
-    }
-
-    public void setNewVersionAttributeSize(int newVersionAttributeSize) {
-        this.newVersionAttributeSize = newVersionAttributeSize;
-    }
-
-    public int getNewVersionATSConceptSize() {
-        return newVersionATSConceptSize;
-    }
-
-    public void setNewVersionATSConceptSize(int newVersionATSConceptSize) {
-        this.newVersionATSConceptSize = newVersionATSConceptSize;
-    }
-
-    public int getNewVersionATSRelationshipSize() {
-        return newVersionATSRelationshipSize;
-    }
-
-    public void setNewVersionATSRelationshipSize(int newVersionATSRelationshipSize) {
-        this.newVersionATSRelationshipSize = newVersionATSRelationshipSize;
-    }
-
-    public int getNewVersionATSAttributeSize() {
-        return newVersionATSAttributeSize;
-    }
-
-    public void setNewVersionATSAttributeSize(int newVersionATSAttributeSize) {
-        this.newVersionATSAttributeSize = newVersionATSAttributeSize;
-    }
-
-    public int getNewVersionMatchedConceptSize() {
-        return newVersionMatchedConceptSize;
-    }
-
-    public void setNewVersionMatchedConceptSize(int newVersionMatchedConceptSize) {
-        this.newVersionMatchedConceptSize = newVersionMatchedConceptSize;
-    }
-
-    public int getNewVersionMatchedRelationshipSize() {
-        return newVersionMatchedRelationshipSize;
-    }
-
-    public void setNewVersionMatchedRelationshipSize(int newVersionMatchedRelationshipSize) {
-        this.newVersionMatchedRelationshipSize = newVersionMatchedRelationshipSize;
-    }
-
-    public int getNewVersionMatchedAttributeSize() {
-        return newVersionMatchedAttributeSize;
-    }
-
-    public void setNewVersionMatchedAttributeSize(int newVersionMatchedAttributeSize) {
-        this.newVersionMatchedAttributeSize = newVersionMatchedAttributeSize;
-    }
-
-    public int getNewVersionSceneConceptSize() {
-        return newVersionSceneConceptSize;
-    }
-
-    public void setNewVersionSceneConceptSize(int newVersionSceneConceptSize) {
-        this.newVersionSceneConceptSize = newVersionSceneConceptSize;
-    }
-
-    public int getNewVersionSceneRelationshipSize() {
-        return newVersionSceneRelationshipSize;
-    }
-
-    public void setNewVersionSceneRelationshipSize(int newVersionSceneRelationshipSize) {
-        this.newVersionSceneRelationshipSize = newVersionSceneRelationshipSize;
-    }
-
-    public int getNewVersionSceneAttributeSize() {
-        return newVersionSceneAttributeSize;
-    }
-
-    public void setNewVersionSceneAttributeSize(int newVersionSceneAttributeSize) {
-        this.newVersionSceneAttributeSize = newVersionSceneAttributeSize;
-    }
-
-    public Map<String, List<String[]>> getOldSceneAttributes() {
-        return oldSceneAttributes;
-    }
-
-    public void setOldSceneAttributes(Map<String, List<String[]>> oldSceneAttributes) {
-        this.oldSceneAttributes = oldSceneAttributes;
-    }
-
-    public Map<String, List<String[]>> getOldSceneRelationships() {
-        return oldSceneRelationships;
-    }
-
-    public void setOldSceneRelationships(Map<String, List<String[]>> oldSceneRelationships) {
-        this.oldSceneRelationships = oldSceneRelationships;
-    }
-
-    public Map<String, List<String[]>> getOldMatchedAttributes() {
-        return oldMatchedAttributes;
-    }
-
-    public void setOldMatchedAttributes(Map<String, List<String[]>> oldMatchedAttributes) {
-        this.oldMatchedAttributes = oldMatchedAttributes;
-    }
-
-    public Map<String, List<String[]>> getOldMatchedRelationships() {
-        return oldMatchedRelationships;
-    }
-
-    public void setOldMatchedRelationships(Map<String, List<String[]>> oldMatchedRelationships) {
-        this.oldMatchedRelationships = oldMatchedRelationships;
-    }
-
-    public Map<String, List<String[]>> getNewSceneAttributes() {
-        return newSceneAttributes;
-    }
-
-    public void setNewSceneAttributes(Map<String, List<String[]>> newSceneAttributes) {
-        this.newSceneAttributes = newSceneAttributes;
-    }
-
-    public Map<String, List<String[]>> getNewSceneRelationships() {
-        return newSceneRelationships;
-    }
-
-    public void setNewSceneRelationships(Map<String, List<String[]>> newSceneRelationships) {
-        this.newSceneRelationships = newSceneRelationships;
-    }
-
-    public Map<String, List<String[]>> getNewMatchedAttributes() {
-        return newMatchedAttributes;
-    }
-
-    public void setNewMatchedAttributes(Map<String, List<String[]>> newMatchedAttributes) {
-        this.newMatchedAttributes = newMatchedAttributes;
-    }
-
-    public Map<String, List<String[]>> getNewMatchedRelationships() {
-        return newMatchedRelationships;
-    }
-
-    public void setNewMatchedRelationships(Map<String, List<String[]>> newMatchedRelationships) {
-        this.newMatchedRelationships = newMatchedRelationships;
-    }
 }
+
