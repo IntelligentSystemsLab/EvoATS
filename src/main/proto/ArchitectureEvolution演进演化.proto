@@ -1,0 +1,170 @@
+syntax = "proto3";
+
+option java_package = "io.grpc.examples";
+//option java_package = "com.example.grpc.api";
+option java_outer_classname = "RPCDateServiceApi";
+option java_multiple_files = true;
+
+package AtsEvolutions;
+service AtsEvolution {
+  rpc SupplySchema(AtsArchitecture) returns(ReceiveRes){};
+  rpc Evolution (AtsSimRes) returns (ArchitectureEvolution) {};
+  rpc VerityEvolution(DirectivesVerityRes) returns(ReceiveRes){};
+}
+message Node {
+  enum type{
+    Agent = 0;
+    Info = 1;
+  }
+  int64 id = 1;
+  string name=2;
+  double delay=3;
+  int32 system_id=4;
+  GeoCoordinate geo=5;
+  int32 grade=6;
+  int32 up_nodes=7;
+  int32 down_nodes=8;
+  int32 level_min=9;
+  int32 level_max=10;
+  int32 level_default=11;
+}
+message GeoCoordinate {
+  double x = 1;
+  double  y = 2;
+}
+message Link {
+  enum type{
+	PMModel=0;
+	Distribution=1;
+	Constant=2;
+  }
+  enum flow_type{
+	Agent = 0;
+    Info = 1;
+  }
+  int64 id=1;
+  int64 from_node=2;
+  int64 to_node=3;
+  int64 system_id=4;
+  int64 model_id=5;
+  double default_flow=6;
+  map<int64,FlowModelNet> flow_ojects=7;
+}
+message FlowPath {
+  enum type{
+    Agent = 0;
+    Info = 1;
+  }
+  int64 id=1;
+  map<int64,Link> pathlinks=2;
+}
+message System {
+  int64 id=1;
+  map<int64,Node> origin_components=2;
+  map<int64,Node> destination_components=3;
+  map<int64,Link> origin_flows=4;
+  map<int64,Link> destination_flows=5;
+}
+message FlowObject{
+  enum type{
+	FlowSource=0;
+	FlowDelay=1;
+	FlowSink=2;
+	FlowSelect=3;
+	FlowHold=4;
+	FlowCombine=5;
+	FlowSplit=6;
+  }
+  int64 id=1;
+  string idstr=2;
+  int32 capacity=3;
+  int32 from_count=4;
+  int32 dest_count=5;
+  int32 flow_count=6;
+  map<int32,int32> capacitymap=7;
+  map<int32,FlowObject> up_connectors=8;
+  map<int32,FlowObject> dest_connector=9;
+  map<int32,Entity> upconcapentitymap=10;
+  map<int32,Entity> destconentitype=11;
+  int32 delaytime=12;
+  bool flag=13;
+  map<int32,double>destpossibilitymap=14;
+  int32 outcopynum=15;
+
+}
+
+message FlowConnect{
+  int64 id=1;
+  FlowObject from_obiect=2;
+  FlowObject to_obiect=3;
+}
+message Entity{
+	int64 id=1;
+	string idstr=2;
+	string flowentitype=3;
+	map<int32,FlowObject> original_flow_object=4;
+	map<int32,FlowObject> destinational_flow_object=5;
+	double flow_time_=6;
+	double stay_time_=7;
+	bool passflag_=8;
+}
+message FlowModelNet{
+	int64 id=1;
+	map<int64,FlowObject> flow_objects=2;
+	map<int64,FlowConnect> flow_connects=3;
+}
+
+message AtsArchitecture {//架构结构体
+  int64 id=1;
+  int32 sim_time=2;
+  map<int64, Node> nodes=3;
+  map<int64, Link> links=4;
+  map<int64, FlowPath> flow_path=5;
+  map<int64, System> system=6;
+}
+message ReceiveRes{
+  bool res=1;
+}
+message AtsSimRes{//仿真结果
+	int64 id=1;
+	int64 time=2;
+	map<int64,NodeRes> node_res=3;//仿真基础引擎节点流量信息
+	map<int64,LinkRes> link_res=4;//仿真基础引擎link流量信息
+	map<int64,FlowObjectRes> flow_object_res=5;//仿真扩展引擎节点流量信息
+	map<int64,FlowConnectRes> flow_connect_res=6;//仿真扩展引擎link流量信息
+}
+
+message NodeRes{
+	int64 node_id=1;//节点id
+	double stock=2;//存量
+	double outflow=3;//流出量
+	double inflow=4;//流入量
+}
+message LinkRes{
+    int64 link_id=1;//连接id
+	double flow=2;//流量
+}
+message FlowObjectRes{
+	int64 object_id=1;
+	int64 link_id=2;
+	double stock=3;//存量
+	double outflow=4;//流出量
+	double inflow=5;//流入量
+}
+message FlowConnectRes{
+    int64 link_id=1;//连接id
+	double flow=2;//流量
+	map<int64,Entity> entity=3;//流经实体
+}
+message Step{
+	int64 id=1;
+	int64 res_start_time=2;
+	int64 res_end_time=3;
+}
+message DirectivesVerityRes{
+	bool directives_verity_res=1;//演进架构检验结果
+}
+
+message ArchitectureEvolution{//演进演化指令
+	
+}

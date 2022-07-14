@@ -1,0 +1,3048 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/Auto/C0#"
+     xml:base="http://www.semanticweb.org/Auto/C0"
+     xmlns:C0="http://www.semanticweb.org/Auto/C0#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:Auto="http://www.semanticweb.org/Auto#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/Auto"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#优势 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#优势"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#别名 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#别名"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#功能 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#功能"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#劣势 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#劣势"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#定义 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#定义"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#工作频率 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#工作频率"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#方位角分辨率 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#方位角分辨率">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/Auto#毫米波雷达"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#演进自 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#演进自"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#英语名称 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/Auto#英语名称"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#产生数据 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#产生数据"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#依赖于 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#依赖于">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#保持 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#保持">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#信息反馈 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#信息反馈"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#关闭自动驾驶系统后成为 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#关闭自动驾驶系统后成为"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#减速信号 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#减速信号"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#出行方案 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#出行方案"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#分析数据 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#分析数据"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#加速信号 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#加速信号"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#包含于 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#包含于"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#响应 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#响应"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#在...时激活 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#在...时激活">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#实施碰撞缓冲措施 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#实施碰撞缓冲措施"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#实现 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#实现"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#开启自动驾驶系统后成为 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#开启自动驾驶系统后成为">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#当没有响应时激活 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#当没有响应时激活"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#必要时提交 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#必要时提交"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#必要时激活 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#必要时激活"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#必要时警告 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#必要时警告"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#扭矩调节 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#扭矩调节"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#持续执行 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#持续执行"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#持续监控 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#持续监控">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#换挡控制 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#换挡控制"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#接管 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#接管"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#控制 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#控制"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#提交最佳操纵 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#提交最佳操纵"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#提供动力 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#提供动力"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#提供能源 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#提供能源"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#支持 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#支持"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#方向控制信号 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#方向控制信号"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#施加制动力 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#施加制动力"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#无用户应答 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#无用户应答"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#生效于 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#生效于"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#相关目标和事件 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#相关目标和事件"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#短期内执行 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#短期内执行"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#立刻响应关闭系统请求 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#立刻响应关闭系统请求"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#立刻响应开启系统请求 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#立刻响应开启系统请求"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#缓解 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#缓解"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#识别 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#识别">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#请求用户介入 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#请求用户介入">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#请求系统介入 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#请求系统介入">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#调用 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#调用"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车身装置调节 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#车身装置调节"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转换到 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#转换到"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#采集数据 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/Auto#采集数据"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#L3级自动驾驶系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#L3级自动驾驶系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#必要时提交"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务接管"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续执行"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#提交最佳操纵"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#线控系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#立刻响应关闭系统请求"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务后援用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#立刻响应开启系统请求"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#驾驶员"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#地理信息系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#探测感知系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#整车控制系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#显示和报警系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#电源管理系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#通信系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:别名>Conditional Autonomous Driving</Auto:别名>
+        <Auto:定义>司机可以安全地将注意力从驾驶任务上转移开，例如，司机可以发短信或看电影。车辆将处理需要立即响应的情况，如紧急刹车。司机必须仍然准备在制造商规定的有限时间内，在车辆要求干预时进行干预。你可以把自动化系统想象成一个副驾驶，当轮到你开车时，它会有序地提醒你。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#V2I -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#V2I">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#通信系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#V2V -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#V2V">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#通信系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#V2X -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#V2X">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#通信系统"/>
+        <owl:versionInfo>L4</owl:versionInfo>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#三维环境映射 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#三维环境映射">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#目标和事件探测"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#三轴姿态角 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#三轴姿态角">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#专用短程通信 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#专用短程通信">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#通信系统"/>
+        <Auto:英语名称>Dedicated short range communications</Auto:英语名称>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#中程目标检测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#中程目标检测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#环境监控"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#盲点监控"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#主动车道变换 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#主动车道变换">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#机动规划"/>
+        <Auto:定义>车辆可自动完成车道变换，而无需驾驶员通过车辆转向信号杆的输入来确认操作。</Auto:定义>
+        <Auto:演进自>车道变换协助</Auto:演进自>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#事件相机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#事件相机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#照相机"/>
+        <Auto:优势>事件相机是事件触发型，它对场景中移动造成的变换比较敏感，因此可以用在检测动态目标上。</Auto:优势>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#交通信息数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#交通信息数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#交通拥堵信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#交通拥堵信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#交通信息数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#交通条件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#交通条件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#设计运行范围"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#交通标志识别 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#交通标志识别">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#物体识别"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#道路交通标志标线信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#周围环境信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>系统可以通过图像处理技术识别常见的交通标志，例如“停止”标志或“前行”标志。该系统考虑了标志的形状,颜色和符号</Auto:定义>
+        <Auto:英语名称>Road Sign Recognition</Auto:英语名称>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#交通路网信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#交通路网信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#交通信息数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#传动系 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#传动系">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#汽车底盘"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#传感器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#传感器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用电设备"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#侧滑传感器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#侧滑传感器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#侧滑数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#侧滑数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#侧滑数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#停车位信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#停车位信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#交通信息数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#充电管理 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#充电管理">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电源管理系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#光照条件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#光照条件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#设计运行范围"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#全景相机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#全景相机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#照相机"/>
+        <Auto:劣势>球面图像是高度失真的，所以校准的难度很大。</Auto:劣势>
+        <Auto:定义>全景相机就是理论上拥有360度视角的相机</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#其他用电装置 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#其他用电装置">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用电设备"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#其他车身装置 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#其他车身装置">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#减速控制 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#减速控制">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#自适应巡航"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#出行方案规划 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#出行方案规划">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#功能"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#出行方案"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务后援用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#用户出行需求数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>出行方案规划是导航的前提，根据目的地、出发地以及路径策略设置，为用户量身设计出行方案。同时可结合实时交通，帮助用户绕开拥堵路段，提供更贴心、更人性化的出行体验。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#出行路线数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#出行路线数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#交通信息数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#制动力控制 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#制动力控制">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电源管理系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#制动系 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#制动系">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#汽车底盘"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#制动能量回馈 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#制动能量回馈">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电源管理系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#前向碰撞警告 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#前向碰撞警告">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#故障诊断与处理"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#必要时警告"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#周围车辆信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#增强醒目性"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#前车速度 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#前车速度">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#周围车辆信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#功能 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#功能"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#加速度数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#加速度数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#加速控制 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#加速控制">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#自适应巡航"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#动态驾驶任务 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#动态驾驶任务">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#功能"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#生效于"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#设计运行范围"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:别名>DDT</Auto:别名>
+        <Auto:定义>动态驾驶任务DDT（Dynamic Driving Task）是在道路交通中操作车辆所需的所有实时操作和策略功能，不包括行程安排和目的地和航路点选择等战略功能，包括但不限于以下子任务：
+a) 通过转向控制车辆横向运动（操作）；
+b) 通过加速和减速控制车辆纵向运动（操作）；
+c) 通过目标和事件检测、识别、分类和响应准备（操作和策略）监控驾驶环境；
+d) 对象和事件响应执行（操作和策略）；
+e) 机动规划（策略）；
+f) 通过照明、鸣笛、信号、手势等（策略）增强醒目性。
+其中子任务c)和d)统称为对象和事件检测与响应</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#动态驾驶任务后援用户 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#动态驾驶任务后援用户">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用户"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#关闭自动驾驶系统后成为"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#驾驶员"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#响应"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务接管"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>当 L3 级驾驶自动化系统工作时，可以识别驾驶自动化系统发出的接管请求和明显的动态驾驶任务相关的车辆故障，并执行动态驾驶任务接管的用户。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#动态驾驶任务接管 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#动态驾驶任务接管">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#功能"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#依赖于"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#故障诊断与处理"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#无用户应答"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#执行风险减缓策略"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#短期内执行"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#请求用户介入"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务后援用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#警报系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>当发生驾驶自动化系统失效、车辆其他系统失效或即将不满足设计运行条件时，由用户执行动态驾驶任务或由用户/驾驶自动化系统使车辆达到最小风险状态的行为。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#单目相机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#单目相机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#照相机"/>
+        <Auto:优势>廉价</Auto:优势>
+        <Auto:优势>研究领域成熟</Auto:优势>
+        <Auto:劣势>理论上无法获得深度</Auto:劣势>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#发动机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#发动机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#汽车底盘"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#硬件"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#提供动力"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#汽车底盘"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#发声装置 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#发声装置">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#其他用电装置"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#发电机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#发电机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电源"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#提供能源"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#用电设备"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#变速器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#变速器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传动系"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#后方监测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#后方监测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#环绕视野监测"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#周围环境信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#周围环境信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#周围环境的三维信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#周围环境的三维信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#周围环境信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#周围环境的二维图像 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#周围环境的二维图像">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#周围环境信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#周围行人信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#周围行人信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#交通信息数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#周围车辆信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#周围车辆信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#交通信息数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#喇叭 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#喇叭">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#发声装置"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#地图数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#地图数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#地理信息系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#地理信息系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#交通拥堵信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#交通路网信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#停车位信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#道路交通标志标线信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#地图数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#出行方案规划"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#寻路系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#导航系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#探测感知系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:别名>GIS</Auto:别名>
+        <Auto:定义>地理信息系统(GIS) 是一个创建、管理、分析和绘制所有类型数据的系统。 GIS 将数据连接到地图，将位置数据（事物所在位置）与所有类型的描述性信息（事物在该位置的情况）集成到一起。 这可以为适用于自然科学和几乎所有行业的制图和分析提供基础。 GIS 帮助用户了解模式、关系和地理环境。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#增强醒目性 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#增强醒目性">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#夜视 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#夜视">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#能见度提高"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#天气条件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#天气条件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#设计运行范围"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#定位数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#定位数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#定位系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#定位系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#导航系统"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#探测感知系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#定位数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#寻路系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#导航系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车道居中"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#防撞系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>定位系统是以确定空间位置为目标而构成的相互关联的一个集合体或装置（部件）。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#定位芯片 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#定位芯片">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#定位数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#寻路系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#寻路系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#导航系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#出行路线数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#交通路网信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#用户出行需求数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#出行方案规划"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#导航系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#导航系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#出行路线数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#交通路网信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#加速度数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#自主泊车"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#定位系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#寻路系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>导航系统通常导航系统是一些基础功能的集合,包括:“定位”、“目的地选择”、“路径计算”和“路径指导”。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#平视显示 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#平视显示">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#能见度提高"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#信息反馈"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务后援用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#平视显示系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#平视显示系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#显示和报警系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#平视显示"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:优势>避免驾驶员移开视线查看速度表期间无视野的危险</Auto:优势>
+        <Auto:定义>平视显示系统就是可以将车辆各种信息以投影方式显示在风挡玻璃上或车前两米处，也就是司机的直接视野中。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#座椅 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#座椅">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#惯性测量单元 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#惯性测量单元">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#三轴姿态角"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#加速度数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#角加速度数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>是一种使用加速度计和陀螺仪来测量物体三轴姿态角（或角速率）以及加速度的装置。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#探测感知系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#探测感知系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#目标和事件探测"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#故障数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#故障数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#故障诊断与处理 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#故障诊断与处理">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#功能"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#故障数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#目标和事件探测"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#数据"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#整车控制系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#整车控制系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#电机数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#蓄电池数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#轮速数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#必要时提交"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务接管"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#扭矩调节"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#发动机"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#线控系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#换挡控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#变速器"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#电源管理系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#故障诊断与处理"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆横向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#载具自我监控"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#车身装置调节"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#方向盘转向数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#方向盘转向数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#无级式变速器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#无级式变速器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#变速器"/>
+        <Auto:定义>传动比可以无限多级变化。有电力式、液力式、金属带式等。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#显示和报警系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#显示和报警系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#发声装置"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#智能调速 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#智能调速">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+        <Auto:定义>该系统能识别交通标识，并根据读取的最高限速信息控制油门，确保驾驶者在法定限速内行驶，有效避免驾驶者在无意识情况下的超速行为。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#有级式变速器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#有级式变速器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#变速器"/>
+        <Auto:定义>传动比可以有限多级变化。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#机动规划 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#机动规划">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+        <Auto:定义>考虑通路规划机制规定的通路，为车辆做出最佳机动决策。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#横向加速度数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#横向加速度数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#加速度数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#毫米波雷达 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#毫米波雷达">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#障碍物的大小"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#障碍物的方位角"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#障碍物的距离"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:优势>全天候、全天时工作特性 - 不论昼夜，不受天气状况限制，即使雨雪天都能正常工作</Auto:优势>
+        <Auto:优势>可实现远距离感知与探测</Auto:优势>
+        <Auto:优势>对于静态和动态目标均能作出高精度测量</Auto:优势>
+        <Auto:优势>纵向目标探测距离与速度探测能力强</Auto:优势>
+        <Auto:功能>利用高频电路产生特定调制频率（FMCW）的电磁波，并通过天线发送电磁波和接收从目标反射回来的电磁波，通过发送和接收电磁波的参数来进行多个目标进行测距、测速以及方位测量；
+测速是根据多普勒效应，而方位测量（包括水平角度和垂直角度）是通过天线的阵列方式来实现的。</Auto:功能>
+        <Auto:劣势>对横向目标敏感度低，例如：对横穿车辆检测效果不佳</Auto:劣势>
+        <Auto:劣势>对高处物体以及小物体检测效果不佳</Auto:劣势>
+        <Auto:劣势>无法成像，无法进行图像颜色识别</Auto:劣势>
+        <Auto:劣势>行人反射波较弱，对行人分辨率不高，探测距离近</Auto:劣势>
+        <Auto:工作频率>24GHz, 77GHz</Auto:工作频率>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#汽油发动机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#汽油发动机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#发动机"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#汽车底盘 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#汽车底盘">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#硬件"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#海拔高度 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#海拔高度">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#定位数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#混合动力发动机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#混合动力发动机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#发动机"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#激光雷达 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#激光雷达">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#周围环境的三维信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#三维环境映射"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#短程目标探测"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:优势>分辨率高、精度高、抗干扰能力强、3D点云技术</Auto:优势>
+        <Auto:劣势>工艺要求高，造价昂贵；无法识别颜色图案、文字等标识；需要很高的计算能力</Auto:劣势>
+        <Auto:定义>激光雷达由激光发射机、光学接收机、转台和信息处理系统等组成。目前，许多自动驾驶汽车的激光雷达安装在车顶，通过高速旋转对周围进行360°扫描，获得周围空间的点云数据，实时绘制出车辆周边的三维空间地图</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#照明装置 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#照明装置">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#其他用电装置"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#照相机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#照相机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#周围环境的二维图像"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#远距离特征感知"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#驾驶员睡意检测"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#驾驶员信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#物体检测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#物体检测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#物体检测系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#物体检测系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#物体检测系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#探测感知系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#道路交通标志标线信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#障碍物数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#周围环境的三维信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#物体识别"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#物体识别 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#物体识别">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#物体检测系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#环境监控 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#环境监控">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#目标和事件探测"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#三维环境映射"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#环绕视野监测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#环绕视野监测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#短程目标探测"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#用户 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#用户">
+        <Auto:定义>与驾驶自动化相关的人类角色的统称。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#用户出行需求数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#用户出行需求数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#用户接管能力监测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#用户接管能力监测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#驾驶员监控"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务接管"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#用电设备 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#用电设备">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电气设备"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#电动机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#电动机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用电设备"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#提供动力"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#汽车底盘"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#电机数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#电机数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#电气设备 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#电气设备">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#硬件"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#电源 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#电源">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电气设备"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#电源管理系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#电源管理系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#电气设备"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#电气设备"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#目标和事件响应 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#目标和事件响应">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+        <Auto:定义>对目标和事件进行适当的响应</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#目标和事件探测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#目标和事件探测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#碰撞避免"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#相关目标和事件"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#机动规划"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#相关目标和事件"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#目标和事件响应"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#相关目标和事件"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆横向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#相关目标和事件"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>通过目标和事件检测、识别、分类和响应准备（操作和策略）监控驾驶环境</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#盲点监控 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#盲点监控">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#环绕视野监测"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#眨眼次数数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#眨眼次数数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#驾驶员信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#眼球数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#眼球数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#驾驶员信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#短程目标探测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#短程目标探测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#环境监控"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#自主泊车"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车道居中"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#硬件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#硬件"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#碰撞避免 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#碰撞避免">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#目标和事件响应"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#必要时警告"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务后援用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#警报系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#离合器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#离合器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传动系"/>
+        <Auto:功能>保证平稳起步</Auto:功能>
+        <Auto:功能>保证换挡平顺</Auto:功能>
+        <Auto:功能>防止系统过载</Auto:功能>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#空调装置 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#空调装置">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#其他用电装置"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#系统"/>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#紧急制动系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#紧急制动系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#线控制动"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#碰撞避免"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#紧急制动系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#紧急驾驶员协助 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#紧急驾驶员协助">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#机动规划"/>
+        <Auto:定义>当驾驶员的车辆与前车进入危险距离时，如果驾驶员未作出正确反应，紧急驾驶员协助系统会启动制动系统来协助驾驶员刹车。它可以显著缩短制动距离。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#红外传感器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#红外传感器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#驾驶员信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#纵向加速度数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#纵向加速度数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#加速度数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#线控制动 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#线控制动">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#线控系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#制动系"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#自适应巡航"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:优势>响应速度大大提高</Auto:优势>
+        <Auto:优势>简化了制动系统的结构、便于装配和维护</Auto:优势>
+        <Auto:优势>随着制动液的取消，降低了环境污染</Auto:优势>
+        <Auto:劣势>对可靠性要求很高，需要备份系统来保证可靠性</Auto:劣势>
+        <Auto:劣势>工作环境恶劣，刹车片附近的半导体部品无法承受高温。</Auto:劣势>
+        <Auto:劣势>电机功率限制动力不足</Auto:劣势>
+        <Auto:定义>根据制动踏板传感器信号及车速等车辆状态信号，驱动和控制执行机构电机来产生所需要的制动力。制动力矩完全是通过安装在4个轮胎上的由电机驱动的执行机构产生。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#线控系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#线控系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#线控转向 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#线控转向">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#线控系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#方向盘转向数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#转向器"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆横向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#方向控制信号"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#转向传动机"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>线控转向系统是指，在方向盘和转向齿条之间是通过线控（电子信号）连接和控制的转向系统，即在它们之间没有直接的液力或机械等物理连接。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#线控驱动 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#线控驱动">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#线控系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#传动系"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>线控驱动通过用导线来代替拉索或者拉杆，通过检测油门脚踏板的位移，实现电子节气门开度的自动调整，调节进气量大小，从而实现控制车速的目的。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#经纬度 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#经纬度">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#定位数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#能见度提高 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#能见度提高">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#功能"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#能量利用管理和优化 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#能量利用管理和优化">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电源管理系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#车辆照明及信号装置控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#自主停入车位 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#自主停入车位">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#自主泊车"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#停车位信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#自主唤车 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#自主唤车">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#自主泊车"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#用户出行需求数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#自主泊车 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#自主泊车">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#机动规划"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车辆横向运动控制"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#交通路网信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#道路交通标志标线信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>驾驶员可以在指定地点召唤停车位上的车辆，或让当前驾驶的车辆停入指定或随机的停车位。整个过程正常状态下无需人员操作和监管，对应于SAE自动驾驶级别中的L3级。自主泊车系统包含两个功能，即泊车与唤车。</Auto:定义>
+        <Auto:演进自>自动泊车</Auto:演进自>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#自主超车 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#自主超车">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#机动规划"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车辆横向运动控制"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续执行"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#碰撞避免"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#短程目标探测"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#线控系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:演进自>超车辅助</Auto:演进自>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#自适应前灯 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#自适应前灯">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#目标和事件响应"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#整车控制系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#环境监控"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>可以根据道路的形状来改变大灯的方向。另一些智能大灯控制系统能够根据车速和道路环境来改变大灯的的强度。</Auto:定义>
+        <Auto:英语名称>Adaptive Front Lighting</Auto:英语名称>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#自适应巡航 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#自适应巡航">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+        <Auto:别名>ACC</Auto:别名>
+        <Auto:定义>可以保持车辆与前方车辆之间的选定速度和距离。ACC可以根据车辆与前车的距离自动刹车或加速。具有停止和启动功能的 ACC 系统可以完全停止并加速回到指定的速度。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#航向数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#航向数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#定位数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#蓄电池数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#蓄电池数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#蜂鸣器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#蜂鸣器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#发声装置"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#行人和车辆识别 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#行人和车辆识别">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#物体识别"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#行驶系 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#行驶系">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#汽车底盘"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#角加速度数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#角加速度数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#警报系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#警报系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#显示和报警系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#增强醒目性"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#计算单元 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#计算单元">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用电设备"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车内部装饰件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车内部装饰件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车身 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车身">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#硬件"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车身壳体 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车身壳体">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车身外部装饰件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车身外部装饰件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车身控制系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车身控制系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#车辆照明及信号装置控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>车身控制系统是用来实现对车身用电器的人性化、 舒适性及部分安全性控制的系统， 涉及车辆防盗、 室内灯、 电动车窗、 玻璃除霜、刮水、 中控锁、 遥控RKE、 转向灯、 前后组合灯、 前后雾灯、喇叭、 天窗、 座椅、 后视镜等的控制</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车身电子稳定系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车身电子稳定系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#线控制动"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#侧滑数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#横向加速度数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#轮转向角数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#分析数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#轮速数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆横向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车辆纵向运动控制"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#施加制动力"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#转向器"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:别名>DSC</Auto:别名>
+        <Auto:别名>ESC</Auto:别名>
+        <Auto:别名>ESP</Auto:别名>
+        <Auto:英语名称>Electronic stability control</Auto:英语名称>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车身附件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车身附件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车辆与前车间的开放距离 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车辆与前车间的开放距离">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#周围车辆信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车辆横向运动控制 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车辆横向运动控制">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+        <Auto:定义>通过转向进行的实时、持续的车辆运动控制。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车辆纵向运动控制 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车辆纵向运动控制">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务"/>
+        <Auto:定义>通过加速和减速进行实时、持续的车辆运动控制。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车速数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车速数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车道偏离预警 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车道偏离预警">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#故障诊断与处理"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#必要时警告"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#道路交通标线信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#增强醒目性"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车道居中 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车道居中">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#机动规划"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车辆横向运动控制"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#车门 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#车门">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#车身"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向传动机 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向传动机">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#转向系"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#控制"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#转向器"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向传感器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向传感器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#轮转向角数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#转向系"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向操纵机构 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向操纵机构">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#转向系"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#方向盘转向数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向盘 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向盘">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#转向操纵机构"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向管柱 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向管柱">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#转向操纵机构"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向系 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向系">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#汽车底盘"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#转向轴 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#转向轴">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#转向操纵机构"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#轮转向角数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#轮转向角数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#轮速传感器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#轮速传感器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#轮速数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#轮速数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#轮速数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#载具自我监控 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#载具自我监控">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#目标和事件探测"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#远程驾驶员 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#远程驾驶员">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用户"/>
+        <Auto:定义>不在可以手动直接操作车辆制动、加速、转向和换挡等操纵装置的驾驶座位上，仍可以实时操纵车辆的驾驶员。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#远距离特征感知 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#远距离特征感知">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#环境监控"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#前向碰撞警告"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#通信单元 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#通信单元">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用电设备"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#通信系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#通信系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#L3级自动驾驶系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#地理信息系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#速度传感器 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#速度传感器">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#传感器"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#采集数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#车速数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#道路交通标志信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#道路交通标志信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#道路交通标志标线信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#道路交通标志标线信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#道路交通标志标线信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#交通信息数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#道路交通标线信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#道路交通标线信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#道路交通标志标线信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#道路条件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#道路条件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#设计运行范围"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#防撞系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#防撞系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#实施碰撞缓冲措施"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#整车控制系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#必要时激活"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#紧急制动系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#周围环境信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#周围车辆信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#定位数据"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#碰撞避免"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#紧急制动系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#线控制动"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#线控转向"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#调用"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#警报系统"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#防锁刹车系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#防锁刹车系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#线控制动"/>
+        <Auto:别名>ABS</Auto:别名>
+        <Auto:功能>提高轮胎使用寿命</Auto:功能>
+        <Auto:功能>确保方向安全性</Auto:功能>
+        <Auto:功能>确保方向操纵性</Auto:功能>
+        <Auto:功能>缩短制动距离</Auto:功能>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#障碍物数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#障碍物数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#障碍物的大小 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#障碍物的大小">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#障碍物数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#障碍物的方位角 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#障碍物的方位角">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#障碍物数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#障碍物的距离 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#障碍物的距离">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#障碍物数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#面部识别信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#面部识别信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#驾驶员信息"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#驱动力控制 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#驱动力控制">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#电源管理系统"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#驾驶员 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#驾驶员">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#用户"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#开启自动驾驶系统后成为"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务后援用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>坐在驾驶座位上,以人工方式直接操作车辆制动、加速、转向和换挡等操纵装置对车辆进行控制的驾驶员。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#驾驶员信息 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#驾驶员信息">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#驾驶员监控 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#驾驶员监控">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#目标和事件探测"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#驾驶员监控系统 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#驾驶员监控系统">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#探测感知系统"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#产生数据"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#驾驶员信息"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#持续监控"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#动态驾驶任务后援用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#驾驶员监控"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>驾驶员监控系统旨在监控驾驶员的警觉性。这些系统使用生物和性能测量来评估驾驶员的警觉性和进行安全驾驶实践的能力。目前，这些系统使用红外传感器和摄像头通过眼球追踪来监控驾驶员的注意力。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#驾驶员睡意检测 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#驾驶员睡意检测">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#驾驶员监控"/>
+        <Auto:定义>驾驶员瞌睡检测旨在防止因驾驶员疲劳引起的碰撞。车辆获取信息，例如面部模式、转向运动、驾驶习惯、转向信号使用和驾驶速度，以确定驾驶员的活动是否与昏昏欲睡的驾驶相对应。如果怀疑有昏昏欲睡的驾驶，车辆通常会发出响亮的警报，并且可能会振动驾驶座。</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#驾驶员预警 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#驾驶员预警">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#故障诊断与处理"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#必要时警告"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#用户"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#增强醒目性"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#高度加速度数据 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#高度加速度数据">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#加速度数据"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#24GHz毫米波雷达 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#24GHz毫米波雷达">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#毫米波雷达"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#短程目标探测"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:别名>短波雷达</Auto:别名>
+        <Auto:定义>24GHz毫米波雷达主要用于短距离，一般在60m以内</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#77GHz毫米波雷达 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#77GHz毫米波雷达">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#毫米波雷达"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#中程目标检测"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>探测距离100-250m</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#79GHz毫米波雷达 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#79GHz毫米波雷达">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#毫米波雷达"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#远距离特征感知"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <Auto:定义>探测距离可以达到200米甚至更远，具有较高的探测范围和较大的角度精度</Auto:定义>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Auto#条件/状态 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Auto#条件/状态"/>
+    
+
+
+    <!-- http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#执行风险减缓策略 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#执行风险减缓策略">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#故障诊断与处理"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#保持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#最低风险条件"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#最低风险条件 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#最低风险条件">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#条件/状态"/>
+        <Auto:定义>当车辆无法完成预定的行程时，由用户或驾驶自动化系统执行并最终使车辆事故风险达到可接受的状态。</Auto:定义>
+        <Auto:英语名称>Minimal Risk Condition</Auto:英语名称>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#设计运行范围 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#设计运行范围">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#条件/状态"/>
+        <Auto:别名>ODD</Auto:别名>
+        <Auto:定义>设计时确定的驾驶自动化功能的本车状态和外部环境。</Auto:定义>
+        <rdfs:comment>每个自动驾驶系统运作的前提条件及适用范围可能都不太一样。只有设计运行范围满足的时候该自动驾驶才能保证正常运作。相反，欠缺任何一个前提条件，该系统都有可能出现故障，这种情况下就要采取最小风险策略或是驾驶员手动接管。</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#车辆照明及信号装置控制 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/godson/ontologies/2022/0/untitled-ontology-41#车辆照明及信号装置控制">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Auto#功能"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/Auto#支持"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Auto#自适应前灯"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/Auto#功能">
+        <Auto:定义>自动驾驶汽车可以实现的功能</Auto:定义>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

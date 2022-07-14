@@ -22,8 +22,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>ContoDiff</artifactId>
+    <groupId>com.ats</groupId>
+    <artifactId>evolution</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
@@ -35,11 +35,43 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.6.1</version>
+                <configuration>
+                    <pluginId>grpc-java</pluginId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <grpc.version>1.47.0</grpc.version><!-- CURRENT_GRPC_VERSION -->
+        <protobuf.version>3.19.2</protobuf.version>
+        <protoc.version>3.19.2</protoc.version>
+        <!-- required for jdk9 -->
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+
 
     <dependencies>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-all</artifactId>
+            <version>1.12.0</version>
+        </dependency>
         <dependency>
             <groupId>Gomma</groupId>
             <artifactId>gomma_enhanced_diff</artifactId>
@@ -69,11 +101,11 @@
             <artifactId>commons-cli</artifactId>
             <version>1.4</version>
         </dependency>
-        <dependency>
-            <groupId>org.semanticweb.elk</groupId>
-            <artifactId>elk-owlapi</artifactId>
-            <version>0.4.1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.semanticweb.elk</groupId>-->
+<!--            <artifactId>elk-owlapi</artifactId>-->
+<!--            <version>0.4.1</version>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
@@ -82,19 +114,23 @@
             <scope>runtime</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.14.1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-slf4j-impl</artifactId>-->
+<!--            <version>2.14.1</version>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/net.sourceforge.owlapi/owlapi-distribution -->
         <dependency>
             <groupId>net.sourceforge.owlapi</groupId>
             <artifactId>owlapi-distribution</artifactId>
-            <version>5.1.17</version>
+            <version>5.0.3</version>
         </dependency>
-
-
+        <!-- https://mvnrepository.com/artifact/org.visualdataweb.vowl.owl2vowl/OWL2VOWL -->
+        <dependency>
+            <groupId>org.visualdataweb.vowl.owl2vowl</groupId>
+            <artifactId>OWL2VOWL</artifactId>
+            <version>0.3.1</version>
+        </dependency>
     </dependencies>
 
 </project>
