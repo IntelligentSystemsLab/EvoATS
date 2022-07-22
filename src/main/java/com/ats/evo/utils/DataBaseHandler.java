@@ -35,8 +35,9 @@ public class DataBaseHandler {
 	public static DataBaseHandler getInstance() {
 		if (singleton == null) {
 			synchronized(DataBaseHandler.class) {
-				if (singleton==null)
+				if (singleton==null) {
 					singleton = new DataBaseHandler();
+				}
 			}
 		}
 		return singleton;
@@ -78,8 +79,10 @@ public class DataBaseHandler {
 		this.databaseConnection = DriverManager.getConnection(Globals.DB_URL);
 	}
 	
-	public void closeDatabaseConnection() {
-
+	public void closeDatabaseConnection() throws SQLException {
+		databaseConnection.close();
+		System.out.println(databaseConnection.isClosed());
+		this.databaseConnection=null;
 	}
 	
 	public int executeDml(String dmlQuery) throws SQLException {
@@ -103,8 +106,9 @@ public class DataBaseHandler {
 		
 		dbCon = this.getDatabaseConnection();
 		stmt = dbCon.createStatement();
-		for (int i=0;i<dmlQueries.length;i++) 
-			stmt.addBatch(dmlQueries[i]);
+		for (String dmlQuery : dmlQueries) {
+			stmt.addBatch(dmlQuery);
+		}
 		affectedRows = stmt.executeBatch();
 		stmt.close();
 		dbCon.close();
@@ -142,8 +146,12 @@ public class DataBaseHandler {
 		stmt = rs.getStatement();
 		dbCon = stmt.getConnection();
 		rs.close();
-		if (stmt!=null) stmt.close(); 
-		if (dbCon!=null && !dbCon.isClosed()) dbCon.close();
+		if (stmt!=null) {
+			stmt.close();
+		}
+		if (dbCon!=null && !dbCon.isClosed()) {
+			dbCon.close();
+		}
 	}
 	
 	public PreparedStatement prepareStatement(String sqlQuery) throws SQLException {

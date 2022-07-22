@@ -1,5 +1,6 @@
 package com.ats.evo;
 
+import com.ats.evo.utils.DataBaseHandler;
 import com.ats.evo.utils.OntologyCreateUtil;
 import com.webdifftool.client.model.DiffEvolutionMapping;
 import com.webdifftool.server.BasicDiffManager;
@@ -12,6 +13,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,9 +21,9 @@ public class EvolutionExtraction {
 
     com.webdifftool.server.OWLManager owl = new com.webdifftool.server.OWLManager();
 
-    public static void main(String[] args) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
+    public static void main(String[] args) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException, SQLException {
         EvolutionExtraction evolutionExtraction = new EvolutionExtraction();
-        FileWriter output = new FileWriter("output1.txt");
+        FileWriter output = new FileWriter("L1-L2.txt");
         OntologyReader reader = new OntologyReader();
         OWLOntology first = reader.loadOntology(new File(Globals.V1));
         OWLOntology second = reader.loadOntology(new File(Globals.V2));
@@ -30,16 +32,14 @@ public class EvolutionExtraction {
         oldManager = OntologyCreateUtil.initOntologyManager(first);
         newManager = OntologyCreateUtil.initOntologyManager(second);
         com.webdifftool.client.model.DiffEvolutionMapping dem =evolutionExtraction.computeEvolution(oldManager,newManager);
-        if (output != null){
-            output.write(dem.getFulltextOfCompactDiff());
-        }
+        output.write(dem.getFulltextOfCompactDiff());
         output.close();
 
 
     }
 
 
-    public com.webdifftool.client.model.DiffEvolutionMapping computeEvolution(com.webdifftool.server.OWLManager oldManager, OWLManager newManager) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
+    public com.webdifftool.client.model.DiffEvolutionMapping computeEvolution(com.webdifftool.server.OWLManager oldManager, OWLManager newManager) throws OWLOntologyCreationException, IOException, OWLOntologyStorageException, SQLException {
         DiffComputation dc = new DiffComputation();
         DiffExecutor.getSingleton().setupRepository();
         BasicDiffManager basicDiffManager = new BasicDiffManager(oldManager,newManager);
@@ -57,14 +57,19 @@ public class EvolutionExtraction {
 
         System.out.println("Loading rules");
         dc.loadConfigForDiffExecutor();
+
+        DataBaseHandler.getInstance().closeDatabaseConnection();
         System.out.println("Applying rules");
         DiffExecutor.getSingleton().applyRules();
         // currentStatus = "Aggregation of changes";
+        DataBaseHandler.getInstance().closeDatabaseConnection();
         System.out.println("Aggregation of changes");
         DiffExecutor.getSingleton().mergeResultActions();
         // currentStatus = "Building of final diff result";
+        DataBaseHandler.getInstance().closeDatabaseConnection();
         System.out.println("Building of final diff result");
         DiffExecutor.getSingleton().retrieveAndStoreHighLevelActions();
+        DataBaseHandler.getInstance().closeDatabaseConnection();
         com.webdifftool.client.model.DiffEvolutionMapping diffResult = new DiffEvolutionMapping(dc.getFullDiffMapping(conceptNames), dc.getCompactDiffMapping(), dc.getBasicDiffMapping());
         dc.computeWordFrequencies(diffResult);
         diffResult.computeDependenciesForBasicChanges();

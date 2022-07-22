@@ -13,7 +13,7 @@ public class getRelations {
     public static void main(String[] args) throws OWLOntologyCreationException {
         OWLManager owl = new OWLManager();
         OntologyReader reader = new OntologyReader();
-        OWLOntology ontology = reader.loadOntology(new File("/Users/godson/Library/CloudStorage/OneDrive-pfm6T/文档/研究生/Autonomous Driving Graph/L3/L3.owl"));
+        OWLOntology ontology = reader.loadOntology(new File("/Users/godson/Documents/ADG/L1.owl"));
         owl.parseOntology(ontology);
 //        owl.getRelevantRelation("自主泊车");
 //        System.out.println("----------");

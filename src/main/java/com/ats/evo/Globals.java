@@ -23,8 +23,8 @@ public class Globals {
 	public static final String BASE_URL = "http://www.godson.top/Auto";
 
 	//Ontologies
-	public static final String V1 = "/Users/godson/Documents/auto/L3.owl";
-	public static final String V2 = "/Users/godson/Documents/auto/L4.owl";
+	public static final String V1 = "/Users/godson/Documents/ADG/L1.owl";
+	public static final String V2 = "/Users/godson/Documents/ADG/L2.owl";
 	//DB connection data
 	public static final String DB_URL = "jdbc:h2:./COntoDiff;MODE=MYSQL;AUTO_SERVER=TRUE";
 //	public static final String KG_PATH = "/Users/godson/Documents/CStandard";

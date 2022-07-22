@@ -199,7 +199,7 @@ public class DiffExecutor {
 		}
 	}
 	
-	public void applyRules() {
+	public void applyRules() throws SQLException {
 		this.allGeneratedResultActions = new HashMap<String,ActionData>();
 		this.newlyGeneratedResultActions = new Vector<ActionData>();
 		this.allReducedChangeActionData = new HashMap<String,ActionData>();
@@ -212,18 +212,18 @@ public class DiffExecutor {
 			long start = System.currentTimeMillis();
 			System.out.print("Applying rules - Round "+round+" ... ");
 			newlyGeneratedResultActions.clear();
-			for (int i=0;i<this.rules.size();i++) {
-				Rule r = this.rules.get(i);
-				if (r.applyUntilRound>=this.round) { //第几轮执行规则
+			for (Rule r : this.rules) {
+				if (r.applyUntilRound >= this.round) { //第几轮执行规则
 					this.applyRule(r);
 				}
-				
+
 			}
 			this.insertNewlyGeneratedResultActions();
 			System.out.println("Done ! ("+(System.currentTimeMillis()-start)+" ms)");
 			round++;
 		} while (newlyGeneratedResultActions.size()>0);
 		round = -1;
+		DataBaseHandler.getInstance().closeDatabaseConnection();
 		long start = System.currentTimeMillis();
 		System.out.print("Marking redundant change actions ... ");
 		this.markingRedundantChangeActions();
@@ -257,14 +257,14 @@ public class DiffExecutor {
 					rs = DataBaseHandler.getInstance().executeSelect(query.toString());
 					List<ActionData> allMergedActions = new Vector<ActionData>();
 					while (rs.next()) {
-						int currentIndex = 2;
+						int currentIndex = 2; //索引从1开始
 						String inputActions = rs.getString(currentIndex++);
 						ActionData currentActionData = new ActionData(currentActionDesc);
 						
 						for (int j=0;j<currentActionDesc.paramTypes.size();j++) {
 							String currentValue = rs.getString(currentIndex++);
 							if (currentActionDesc.multipleValues.get(j)) {
-								currentValue = DiffUtil.eleminateDuplicates(currentValue);
+								currentValue = DiffUtil.eleminateDuplicates(currentValue);//清除融合后演进关系中重复的实体
 							}
 							currentActionData.addDataValue(currentValue);
 						}

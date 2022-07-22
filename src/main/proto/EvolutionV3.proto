@@ -1,0 +1,187 @@
+syntax = "proto3";
+
+option java_package = "com.ats.evo";
+//option java_package = "com.example.grpc.api";
+option java_outer_classname = "EvolutionV3Proto";
+option java_multiple_files = true;
+
+
+package AtsEvolution;
+service AtsEvolution {
+    //输入当前代基的架构，及其要转换到的代基，输出目标代基下的架构
+    /*
+    实例：
+    Client: AdaptiveDesign(AdaptRequest)
+    Server return: EvoAtsArch
+     */
+    rpc AdaptiveDesign(AdaptiveDesignRequest) returns (AtsArchitecture);
+
+    //输入当前代基和目标代基的ATS架构，输出架构在代基间存在的演进关系
+    /*
+    实例：
+    Client: EvolutionAnalysis(EvoAnaRequest)
+    Server return: EvoResult
+     */
+    rpc EvolutionAnalysis(EvolutionAnalysisRequest) returns (EvolutionResult);
+}
+//储存架构中的节点信息
+//定义MonitEquipNode：
+//MonitEquipNode.id=1
+//MonitEquipNode.name="监控设备"
+
+//定义ForwardCarNode:
+//ForwardCarNode.id=2
+//ForwardCarNode.name="前方车辆"
+
+//定义AutoMonitEquipNode:
+//AutoMonitEquipNode.id=3
+//AutoMonitEquipNode.name="自主监控设备"
+//AutoMonitEquipNode.attributes=
+// {
+// key=1
+// "监控用的设备"
+// }
+message Node {
+
+    int64 id = 1;
+    //概念名称
+    string name=2;
+    //属性
+    map<int64,string> attributes=3;
+}
+
+//储存架构中的关系信息
+//定义MonitEdge：
+//MonitEdge.id=1
+//MonitEdge.from_Node=监控设备
+//MonitEdge.to_Node=前方车辆
+//MonitEdge.edge_name=监控
+
+message Edge {
+
+    int64 id=1;
+    //关系的头节点
+    string from_node=2;
+    //关系的尾节点
+    string to_node=3;
+    //关系名称
+    string edge_name=4;
+
+}
+
+
+
+/*
+架构的数据结构，包含架构所处代基，其包含的概念、关系和属性
+定义FromAtsArch：
+FromAtsArch.arch=用户架构1;
+FromAtsArch.generation_id=1;
+FromAtsArch.name="架构1"
+FromAtsArch.description="用户设计的架构1"
+FromAtsArch.Nodes={
+    key=1:
+        Node:MoniEquipNode;
+    key=2:
+        Node:ForwardCarNode;
+}
+FromAtsArch.edges={
+    key=1:
+        Edge:MonitEdge;
+}
+FromAtsArch.attributes={
+    key=1:
+        Attribute:DefineAttribute
+}
+//
+//
+//
+EvoAtsArch：
+EvoAtsArch.arch=用户架构1;
+EvoAtsArch.generation=2;
+EvoAtsArch.name="架构1"
+EvoAtsArch.description="用户设计的架构1"
+EvoAtsArch.Nodes={
+    key=1:
+        Node:AutoMonitEquipNode;
+}
+EvoAtsArch.edges={
+
+}
+EvoAtsArch.attributes={
+
+}
+*/
+message AtsArchitecture {//架构结构体
+    //架构的名称
+    string arch=1;
+    //架构所处的代基
+    int64 generation=2;
+    //架构的名称
+    string name=3;
+    //架构的描述
+    string description=4;
+    //架构中概念（节点）集合
+    map<int64, Node> nodes=5;
+    //架构中关系的集合，Key是Edge的id
+    map<int64, Edge> edges=6;
+}
+
+//调用自适应设计功能时，客户端发起的请求数据格式,包括当前的架构，以及希望把架构转换到的代基
+//定义请求AdaptRequest：
+//AdaptRequest.from_architecture=AtsFromAtsArch
+//AdaptRequest.request_generation_id=2
+message  AdaptiveDesignRequest{
+    //当前的架构
+    AtsArchitecture from_architecture=1;
+    //希望把架构转换到的代基
+    int64 request_generation_id=2;
+}
+
+//演进分析接口的请求，请求包括：当前代基的架构，目标代基的架构
+/*
+定义请求EvoAnaRequest:
+EvoAnaRequest.from_architecture=FromAtsArch
+EvoAnaRequest.to_architecture=EvoAtsArch
+ */
+message EvolutionAnalysisRequest{
+    //当前的架构
+    AtsArchitecture from_architecture=1;
+    //目标代基的架构
+    AtsArchitecture to_architecture=2;
+}
+
+
+/*演进关系的数据结构
+定义ModifyNodeEvo：
+ModifyNodeEvo.id=1
+ModifyNodeEvo.evolution_type=修改节点
+ModifyNodeEvo.evolution_description="监控设备节点被修改为自主监控设备"
+定义DelRelationEvo：
+DelRelationEvo.id=2
+DelRelationEvo.evolution_type_id=删除关系
+DelRelationEvo.evolution_description="监控设备监控前方车辆这一关系被删除"
+*/
+message EvolutionRelation{
+    int64 id=1;
+    //演进关系的类别，包含概念，关系，属性的增删改。
+    string evolution_type=2;
+    //演进关系的描述，如："修改概念，概念1，概念2"表示概念1在代基1演进到代基2这一过程中，其意义被修改为概念2。
+    string evolution_description=3;
+
+}
+
+//架构在当前代基和目标代际间存在的演进关系集合
+/*
+定义EvoResult：
+EvoResult.evolution_edges={
+    key=1:
+        EvolutionRelation:ModifyNodeEvo;
+    key=2:
+        EvolutionRelation:DelRelationEvo;
+}
+
+ */
+message EvolutionResult{
+    //演进关系集合，key是演进关系的id。
+    map<int64, EvolutionRelation> evolution_edges=3;
+}

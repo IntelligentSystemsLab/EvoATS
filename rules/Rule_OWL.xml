@@ -137,6 +137,7 @@
 	<constraint type="equal" leftSide="C_1_Source" leftSideConstant="false" rightSide="C_2_Source" rightSideConstant="false"/>
 	<constraint type="equal" leftSide="R_1" leftSideConstant="false" rightSide="R_2" rightSideConstant="false"/>
 	<constraint type="unequal" leftSide="C_1_Target" leftSideConstant="false" rightSide="C_2_Target" rightSideConstant="false"/>
+	<constraint type="in" leftSide="R_2" leftSideConstant="false" rightSide="'is_a','part_of'" rightSideConstant="true"/>
 </constraints>
 <result>
 	<resultAction name="move">
@@ -593,79 +594,79 @@
 </result>
 </rule>
 
-<rule description="Assigns relationship additions for substitutes" maxRound="2">
-<input>
-	<inputAction number="1" negation="false" name="substitute" checkOnly="false">
-		<inputVariable>C_From</inputVariable>
-		<inputVariable>C_To</inputVariable>
-	</inputAction>
-	<inputAction number="2" negation="false" name="addR" checkOnly="false">
-		<inputVariable>C_2_Source</inputVariable>
-		<inputVariable>R_2</inputVariable>
-		<inputVariable>C_2_Target</inputVariable>
-	</inputAction>
-</input>
-<constraints>
-	<constraint type="equal" leftSide="C_To" leftSideConstant="false" rightSide="C_2_Source" rightSideConstant="false"/>
-	<constraint type="in" leftSide="R_2" leftSideConstant="false" rightSide="'is_a','part_of'" rightSideConstant="true"/>
-</constraints>
-<result>
-	<resultAction name="substitute">
-		<resultVariable>C_From</resultVariable>
-		<resultVariable>C_To</resultVariable>
-	</resultAction>
-	<reduction/>
-</result>
-</rule>
+<!--<rule description="Assigns relationship additions for substitutes" maxRound="2">-->
+<!--<input>-->
+<!--	<inputAction number="1" negation="false" name="substitute" checkOnly="false">-->
+<!--		<inputVariable>C_From</inputVariable>-->
+<!--		<inputVariable>C_To</inputVariable>-->
+<!--	</inputAction>-->
+<!--	<inputAction number="2" negation="false" name="addR" checkOnly="false">-->
+<!--		<inputVariable>C_2_Source</inputVariable>-->
+<!--		<inputVariable>R_2</inputVariable>-->
+<!--		<inputVariable>C_2_Target</inputVariable>-->
+<!--	</inputAction>-->
+<!--</input>-->
+<!--<constraints>-->
+<!--	<constraint type="equal" leftSide="C_To" leftSideConstant="false" rightSide="C_2_Source" rightSideConstant="false"/>-->
+<!--	<constraint type="in" leftSide="R_2" leftSideConstant="false" rightSide="'is_a','part_of'" rightSideConstant="true"/>-->
+<!--</constraints>-->
+<!--<result>-->
+<!--	<resultAction name="substitute">-->
+<!--		<resultVariable>C_From</resultVariable>-->
+<!--		<resultVariable>C_To</resultVariable>-->
+<!--	</resultAction>-->
+<!--	<reduction/>-->
+<!--</result>-->
+<!--</rule>-->
 
-<rule description="Assigns relationship deletions for substitutes" maxRound="2">
-<input>
-	<inputAction number="1" negation="false" name="substitute" checkOnly="false">
-		<inputVariable>C_From</inputVariable>
-		<inputVariable>C_To</inputVariable>
-	</inputAction>
-	<inputAction number="2" negation="false" name="delR" checkOnly="false">
-		<inputVariable>C_2_Source</inputVariable>
-		<inputVariable>R_2</inputVariable>
-		<inputVariable>C_2_Target</inputVariable>
-	</inputAction>
-</input>
-<constraints>
-	<constraint type="equal" leftSide="C_From" leftSideConstant="false" rightSide="C_2_Source" rightSideConstant="false"/>
-</constraints>
-<result>
-	<resultAction name="substitute">
-		<resultVariable>C_From</resultVariable>
-		<resultVariable>C_To</resultVariable>
-	</resultAction>
-	<reduction/>
-</result>
-</rule>
+<!--<rule description="Assigns relationship deletions for substitutes" maxRound="2">-->
+<!--<input>-->
+<!--	<inputAction number="1" negation="false" name="substitute" checkOnly="false">-->
+<!--		<inputVariable>C_From</inputVariable>-->
+<!--		<inputVariable>C_To</inputVariable>-->
+<!--	</inputAction>-->
+<!--	<inputAction number="2" negation="false" name="delR" checkOnly="false">-->
+<!--		<inputVariable>C_2_Source</inputVariable>-->
+<!--		<inputVariable>R_2</inputVariable>-->
+<!--		<inputVariable>C_2_Target</inputVariable>-->
+<!--	</inputAction>-->
+<!--</input>-->
+<!--<constraints>-->
+<!--	<constraint type="equal" leftSide="C_From" leftSideConstant="false" rightSide="C_2_Source" rightSideConstant="false"/>-->
+<!--</constraints>-->
+<!--<result>-->
+<!--	<resultAction name="substitute">-->
+<!--		<resultVariable>C_From</resultVariable>-->
+<!--		<resultVariable>C_To</resultVariable>-->
+<!--	</resultAction>-->
+<!--	<reduction/>-->
+<!--</result>-->
+<!--</rule>-->
 
 
-<rule description="Assigns attribute deletions for substitutes" maxRound="2">
-<input>
-	<inputAction number="1" negation="false" name="substitute" checkOnly="false">
-		<inputVariable>C_From</inputVariable>
-		<inputVariable>C_To</inputVariable>
-	</inputAction>
-	<inputAction number="2" negation="false" name="delA" checkOnly="false">
-		<inputVariable>C_2</inputVariable>
-		<inputVariable>A_2</inputVariable>
-		<inputVariable>V_2</inputVariable>
-	</inputAction>
-</input>
-<constraints>
-	<constraint type="equal" leftSide="C_From" leftSideConstant="false" rightSide="C_2" rightSideConstant="false"/>
-</constraints>
-<result>
-	<resultAction name="substitute">
-		<resultVariable>C_From</resultVariable>
-		<resultVariable>C_To</resultVariable>
-	</resultAction>
-	<reduction/>
-</result>
-</rule>
+<!--<rule description="Assigns attribute deletions for substitutes" maxRound="2">-->
+<!--<input>-->
+<!--	<inputAction number="1" negation="false" name="substitute" checkOnly="false">-->
+<!--		<inputVariable>C_From</inputVariable>-->
+<!--		<inputVariable>C_To</inputVariable>-->
+<!--	</inputAction>-->
+<!--	<inputAction number="2" negation="false" name="delA" checkOnly="false">-->
+<!--		<inputVariable>C_2</inputVariable>-->
+<!--		<inputVariable>A_2</inputVariable>-->
+<!--		<inputVariable>V_2</inputVariable>-->
+<!--	</inputAction>-->
+<!--</input>-->
+<!--<constraints>-->
+<!--	<constraint type="equal" leftSide="C_From" leftSideConstant="false" rightSide="C_2" rightSideConstant="false"/>-->
+<!--</constraints>-->
+<!--<result>-->
+<!--	<resultAction name="substitute">-->
+<!--		<resultVariable>C_From</resultVariable>-->
+<!--		<resultVariable>C_To</resultVariable>-->
+<!--	</resultAction>-->
+<!--	<reduction/>-->
+<!--</result>-->
+<!--</rule>-->
 
 <rule description="Generates chgAttValue actions based on addition and deletion of an attribute" maxRound="1">
 <input>
